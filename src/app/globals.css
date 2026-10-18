@@ -1,0 +1,659 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   TINMO design tokens
+   Source of truth: .claude/skills/restaurant-art-direction + motion-design.
+   `@theme static` keeps every token available as a CSS variable even when only
+   referenced from plain CSS (component styles, CSS modules).
+   ========================================================================== */
+@theme static {
+  /* Colour */
+  --color-paper: #f8f7f3;
+  --color-stone: #f0eee8;
+  --color-ink: #20211e;
+  --color-ink-soft: #2b2c28;
+  --color-muted: #77766f; /* decorative / >=24px only — 4.3:1 on paper */
+  --color-muted-strong: #5e5d57; /* secondary body text — ~6.2:1 on paper */
+  --color-line: #dfddd5;
+  --color-line-dark: rgba(239, 235, 224, 0.16); /* hairline on ink surfaces */
+  --color-accent: #a3281f; /* TINMO red — pairs with paper whites */
+  --color-accent-deep: #7e1d16;
+  --color-bone: #efebe0;
+
+  /* Typography (families are injected by next/font in layout.tsx) */
+  --font-display: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-wordmark: clamp(5.5rem, 29vw, 34rem);
+  --text-wordmark--line-height: 0.8;
+  --text-wordmark--letter-spacing: -0.02em;
+  --text-display-xl: clamp(4.25rem, 2rem + 15vw, 15rem);
+  --text-display-xl--line-height: 0.95;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: clamp(2.75rem, 1.6rem + 5vw, 6.25rem);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: clamp(2.125rem, 1.4rem + 3vw, 4.25rem);
+  --text-display-md--line-height: 1.02;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-sm: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem);
+  --text-display-sm--line-height: 1.05;
+  --text-display-sm--letter-spacing: -0.015em;
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  --text-lead--line-height: 1.3;
+  --text-lead--letter-spacing: -0.005em;
+  --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --text-body--line-height: 1.65;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-small--letter-spacing: 0.01em;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.18em;
+
+  /* Layout */
+  --spacing-gutter: clamp(1.25rem, 0.6rem + 3vw, 4rem);
+  --spacing-section: clamp(5.5rem, 3rem + 10vw, 12rem);
+  --container-content: 96rem;
+  --container-narrow: 64rem;
+  --container-measure: 34rem;
+  --breakpoint-3xl: 120rem;
+
+  /* Motion */
+  --ease-tinmo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-tinmo-inout: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+:root {
+  --dur-fast: 180ms;
+  --dur-base: 450ms;
+  --dur-slow: 900ms;
+  --dur-cine: 1400ms;
+  --stagger: 70ms;
+  --stagger-block: 120ms;
+  --header-h: 4.5rem;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100svh;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+    /* Static paper grain: a tiny tiled SVG-noise, ~4% — no fixed overlays, no filters at paint time */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .13 0 0 0 0 .13 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 340;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 40;
+    text-wrap: balance;
+    /* Long German compounds ("Datenschutzerklärung") must never push the page wider than a phone. */
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  h1 em,
+  h2 em,
+  h3 em,
+  h4 em,
+  .tm-em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-accent);
+  }
+  [data-tone="dark"] h1 em,
+  [data-tone="dark"] h2 em,
+  [data-tone="dark"] .tm-em {
+    color: inherit;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Surfaces that are dark (hero, CTA, footer, dialogs over photos) */
+  [data-tone="dark"] :focus-visible,
+  [data-tone="dark"]:focus-visible {
+    outline-color: var(--color-bone);
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+@layer components {
+  /* ---------- 12-column editorial grid (6 columns on mobile) ---------- */
+  .tm-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: calc(var(--spacing-gutter) / 1.5);
+  }
+  @media (min-width: 768px) {
+    .tm-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  /* ---------- Mobile menu ---------- */
+  .tm-mobile-menu {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transition:
+      opacity var(--dur-base) var(--ease-tinmo),
+      clip-path 500ms var(--ease-tinmo-inout),
+      display 500ms allow-discrete,
+      visibility 500ms;
+  }
+  .tm-mobile-menu[data-open="true"] {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+  @starting-style {
+    .tm-mobile-menu[data-open="true"] {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+  }
+  .tm-mobile-menu__item {
+    transition: opacity 600ms var(--ease-tinmo), transform 600ms var(--ease-tinmo);
+    transition-delay: calc(150ms + var(--i, 0) * 70ms);
+  }
+  .tm-mobile-menu[data-open="false"] .tm-mobile-menu__item {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  /* ---------- Skip link ---------- */
+  .tm-skip {
+    position: fixed;
+    left: var(--spacing-gutter);
+    top: 0.75rem;
+    z-index: 100;
+    padding: 0.85rem 1.25rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-size: var(--text-label);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transform: translateY(-200%);
+    transition: transform var(--dur-fast) var(--ease-tinmo);
+  }
+  .tm-skip:focus-visible {
+    transform: none;
+    outline-color: var(--color-bone);
+  }
+
+  /* ---------- Labels ---------- */
+  .tm-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .tm-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    color: var(--color-muted-strong);
+  }
+  .tm-eyebrow__rule {
+    display: block;
+    flex: 1 1 auto;
+    height: 1px;
+    background: var(--color-line);
+  }
+  [data-tone="dark"] .tm-eyebrow {
+    color: var(--color-bone);
+  }
+  [data-tone="dark"] .tm-eyebrow__rule {
+    background: var(--color-line-dark);
+  }
+
+  /* ---------- Photo scrims (the only gradients on the site) ---------- */
+  .scrim-bottom {
+    background: linear-gradient(
+      to top,
+      rgba(32, 33, 30, 0.78) 0%,
+      rgba(32, 33, 30, 0.38) 40%,
+      rgba(32, 33, 30, 0) 72%
+    );
+  }
+  .scrim-top {
+    background: linear-gradient(to bottom, rgba(32, 33, 30, 0.45), rgba(32, 33, 30, 0) 22%);
+  }
+  .scrim-red {
+    background: rgba(163, 40, 31, 0.5);
+    mix-blend-mode: multiply;
+  }
+  .scrim-flat {
+    background: rgba(32, 33, 30, 0.45);
+  }
+
+  /* ---------- Buttons ---------- */
+  /* Two variants: `solid` (ink on light, bone on dark) and `outline`. The hover wipe fills with
+     the opposite surface colour; the border never changes so the button never disappears. */
+  .tm-btn {
+    --btn-bg: var(--color-accent);
+    --btn-fg: var(--color-paper);
+    --btn-border: var(--color-accent);
+    --btn-wipe: var(--color-ink);
+    --btn-wipe-fg: var(--color-paper);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.95rem;
+    min-height: 3.25rem;
+    padding: 0 1.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    border-radius: 0;
+    cursor: pointer;
+    transition: color var(--dur-base) var(--ease-tinmo);
+  }
+  .tm-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--btn-wipe);
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform var(--dur-base) var(--ease-tinmo);
+  }
+  .tm-btn[data-size="sm"] {
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    font-size: 0.75rem;
+  }
+  .tm-btn[data-size="lg"] {
+    min-height: 3.75rem;
+    padding: 0 2.25rem;
+  }
+  .tm-btn__arrow {
+    flex: none;
+    transition: transform var(--dur-base) var(--ease-tinmo);
+  }
+
+  .tm-btn[data-variant="solid"] {
+    --btn-bg: var(--color-accent);
+    --btn-fg: var(--color-paper);
+    --btn-border: var(--color-accent);
+    --btn-wipe: var(--color-ink);
+    --btn-wipe-fg: var(--color-paper);
+  }
+  .tm-btn[data-variant="solid"][data-tone="dark"] {
+    --btn-wipe: var(--color-paper);
+    --btn-wipe-fg: var(--color-accent);
+  }
+  .tm-btn[data-variant="outline"] {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-ink);
+    --btn-border: var(--color-ink);
+    --btn-wipe: var(--color-ink);
+    --btn-wipe-fg: var(--color-paper);
+  }
+  .tm-btn[data-variant="outline"][data-tone="dark"] {
+    --btn-fg: var(--color-bone);
+    --btn-border: color-mix(in srgb, var(--color-bone) 70%, transparent);
+    --btn-wipe: var(--color-bone);
+    --btn-wipe-fg: var(--color-ink);
+  }
+
+  @media (hover: hover) {
+    .tm-btn:not([aria-disabled="true"]):hover {
+      color: var(--btn-wipe-fg);
+    }
+    .tm-btn:not([aria-disabled="true"]):hover::before {
+      transform: scaleY(1);
+    }
+    .tm-btn:not([aria-disabled="true"]):hover .tm-btn__arrow {
+      transform: translateX(4px);
+    }
+  }
+  .tm-btn:not([aria-disabled="true"]):focus-visible {
+    color: var(--btn-wipe-fg);
+  }
+  .tm-btn:not([aria-disabled="true"]):focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  .tm-btn[aria-disabled="true"] {
+    cursor: not-allowed;
+    --btn-bg: transparent;
+    --btn-fg: var(--color-muted-strong);
+    --btn-border: var(--color-line);
+  }
+  .tm-btn[aria-disabled="true"][data-tone="dark"] {
+    --btn-fg: color-mix(in srgb, var(--color-bone) 72%, transparent);
+    --btn-border: var(--color-line-dark);
+  }
+
+  /* ---------- Text links (underline draws on hover) ---------- */
+  .tm-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    padding-bottom: 0.2rem;
+    transition: background-size 350ms var(--ease-tinmo);
+  }
+  .tm-link[data-underline] {
+    background-size: 100% 1px;
+  }
+  @media (hover: hover) {
+    .tm-link:hover {
+      background-size: 100% 1px;
+    }
+    .tm-link[data-underline]:hover {
+      background-position: 100% 100%;
+      background-size: 0% 1px;
+    }
+  }
+  .tm-link:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Larger hit area for small text links, without changing the layout (WCAG target size). */
+  .tm-tap {
+    position: relative;
+  }
+  .tm-tap::after {
+    content: "";
+    position: absolute;
+    inset: -0.7rem -0.3rem;
+  }
+
+  /* ---------- Media frames ---------- */
+  .tm-media {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-stone);
+  }
+  .tm-media img {
+    object-fit: cover;
+  }
+  .tm-media.tm-media--blank {
+    background-color: var(--color-line);
+  }
+  .tm-media--arch {
+    border-radius: 999px 999px 0 0;
+  }
+  .tm-media__fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    color: var(--color-muted-strong);
+  }
+
+  /* ---------- Dialog (reservation placeholder) ---------- */
+  .tm-dialog {
+    width: min(34rem, calc(100vw - 2.5rem));
+    max-height: calc(100svh - 2rem);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid var(--color-line);
+    border-radius: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition:
+      opacity var(--dur-base) var(--ease-tinmo),
+      transform var(--dur-base) var(--ease-tinmo),
+      overlay var(--dur-base) allow-discrete,
+      display var(--dur-base) allow-discrete;
+  }
+  .tm-dialog[open] {
+    opacity: 1;
+    transform: none;
+  }
+  @starting-style {
+    .tm-dialog[open] {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0);
+    }
+  }
+  .tm-dialog::backdrop {
+    background: color-mix(in srgb, var(--color-ink) 64%, transparent);
+    opacity: 0;
+    transition:
+      opacity var(--dur-base) var(--ease-tinmo),
+      overlay var(--dur-base) allow-discrete,
+      display var(--dur-base) allow-discrete;
+  }
+  .tm-dialog[open]::backdrop {
+    opacity: 1;
+  }
+  @starting-style {
+    .tm-dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+  .tm-dialog__panel {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+  .tm-dialog__close {
+    min-height: 2.75rem;
+    padding: 0 0.25rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+    text-decoration-thickness: 1px;
+  }
+
+  /* ---------- Words (RevealText) ---------- */
+  .tm-word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 0.04em 0.16em;
+    margin: 0 -0.04em -0.16em;
+  }
+  .tm-word__in {
+    display: inline-block;
+  }
+}
+
+/* ==========================================================================
+   Motion
+   Contract (see .claude/skills/motion-design):
+     - <html class="motion-ok"> is set by an inline head script ONLY when the visitor
+       has not asked for reduced motion.
+     - <RevealObserver/> adds `motion-ready` once the page has hydrated, then sets
+       [data-in] on elements as they enter the viewport.
+     - Content is hidden ONLY under html.motion-ready and without [data-in], so JS
+       failure, JS disabled and reduced motion all leave everything visible.
+   ========================================================================== */
+@layer components {
+  [data-reveal] {
+    transition-property: opacity, transform, clip-path;
+    transition-duration: var(--dur-slow);
+    transition-timing-function: var(--ease-tinmo);
+    transition-delay: var(--d, 0ms);
+  }
+
+  html.motion-ready [data-reveal="fade-up"]:not([data-in]) {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  html.motion-ready [data-reveal="fade"]:not([data-in]) {
+    opacity: 0;
+  }
+
+  /* Hairline rules draw left -> right */
+  [data-reveal="rule"] {
+    transform-origin: left center;
+    transition-duration: var(--dur-cine);
+  }
+  html.motion-ready [data-reveal="rule"]:not([data-in]) {
+    transform: scaleX(0);
+  }
+
+  /* Editorial image reveal: clip wipe + inner scale settle */
+  [data-reveal="image"] {
+    transition-duration: 1200ms;
+  }
+  html.motion-ready [data-reveal="image"]:not([data-in]) {
+    clip-path: inset(0 0 100% 0);
+  }
+  [data-reveal="image"] img {
+    scale: 1;
+    transition:
+      scale 1600ms var(--ease-tinmo) var(--d, 0ms),
+      transform 900ms var(--ease-tinmo);
+  }
+  html.motion-ready [data-reveal="image"]:not([data-in]) img {
+    scale: 1.12;
+  }
+
+  /* Headline words rise out of a mask */
+  html.motion-ready [data-reveal="words"] .tm-word__in {
+    transition: transform var(--dur-slow) var(--ease-tinmo);
+    transition-delay: calc(var(--d, 0ms) + var(--i, 0) * var(--stagger));
+  }
+  html.motion-ready [data-reveal="words"]:not([data-in]) .tm-word__in {
+    transform: translate3d(0, 112%, 0);
+  }
+
+  /* Hover zoom (pointer devices only) */
+  @media (hover: hover) {
+    [data-hover="zoom"]:hover img {
+      transform: scale(1.04);
+    }
+  }
+
+  /* Hero / above-the-fold entrance — CSS only, independent of JS */
+  @keyframes tm-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 18px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes tm-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes tm-mask {
+    from {
+      transform: translate3d(0, 112%, 0);
+    }
+    to {
+      transform: none;
+    }
+  }
+  html.motion-ok .tm-enter {
+    animation: tm-rise 900ms var(--ease-tinmo) var(--d, 0ms) both;
+  }
+  html.motion-ok .tm-enter-fade {
+    animation: tm-fade 1200ms var(--ease-tinmo) var(--d, 0ms) both;
+  }
+  html.motion-ok .tm-enter-mask {
+    animation: tm-mask 1100ms var(--ease-tinmo) var(--d, 0ms) both;
+  }
+}
+
+/* Reduced motion: nothing animates, nothing is hidden */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
