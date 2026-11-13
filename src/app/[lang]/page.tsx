@@ -6,7 +6,6 @@ import SignatureDishes from "@/components/sections/SignatureDishes";
 import VisitSection from "@/components/sections/VisitSection";
 import { getMedia } from "@/content/localized-media";
 import { heroVideo } from "@/content/media";
-import { site } from "@/content/site";
 import { getText } from "@/content/text";
 import { hasLocale } from "@/i18n/config";
 
@@ -19,7 +18,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   return (
     <>
       <Hero
-        name={site.name}
+        heading={text.meta.title}
         line={text.hero.line}
         menuLabel={text.hero.menuLabel}
         image={m.interior5}

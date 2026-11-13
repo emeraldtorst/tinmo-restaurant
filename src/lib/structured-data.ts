@@ -3,19 +3,29 @@ import { site } from "@/content/site";
 import { getText } from "@/content/text";
 import type { Locale } from "@/i18n/config";
 
+/** Cuisines named on the menus, in the visitor's language. */
+const cuisines: Record<Locale, string[]> = {
+  de: ["Sushi", "Asiatische Küche", "Dim Sum", "Udon", "Thai Curry"],
+  en: ["Sushi", "Asian cuisine", "Dim sum", "Udon", "Thai curry"],
+};
+
+/** Photographs offered to search engines (absolute URLs, only when the domain is configured). */
+const photos = ["interior5", "interior2", "sushi1", "food1", "dessert1"];
+
 /**
- * Restaurant JSON-LD containing ONLY verified information.
+ * Restaurant JSON-LD (schema.org) containing ONLY verified information, read by Google and by AI search engines.
  *
- * Always emitted: name, description, cuisine (from the owner brief).
+ * Always emitted: name, description, cuisine.
  * Added automatically once the matching real value exists in src/content/*:
- *   url         <- NEXT_PUBLIC_SITE_URL
- *   address     <- site.contact.address.postal
- *   telephone   <- site.contact.phone.tel
- *   geo         <- site.location.lat / lng
+ *   url, @id, logo, image  <- NEXT_PUBLIC_SITE_URL
+ *   address                <- site.contact.address.postal
+ *   telephone, email       <- site.contact
+ *   geo, hasMap            <- site.location
  *   openingHoursSpecification <- hours.confirmed === true
- *   sameAs      <- site.social.instagram.url
- *   hasMenu     <- site.menu.fullMenuUrl (the built-in /menu page is a placeholder, so it is not listed)
- *   acceptsReservations <- site.reservation.url
+ *   legalName, vatID       <- site.legal
+ *   sameAs                 <- site.social.instagram.url
+ *   hasMenu                <- the Speisekarte PDF (or site.menu.fullMenuUrl)
+ *   acceptsReservations    <- true (by phone or email) or site.reservation.url
  */
 export function buildRestaurantJsonLd(locale: Locale): Record<string, unknown> {
   const t = getText(locale).meta;
@@ -24,11 +34,20 @@ export function buildRestaurantJsonLd(locale: Locale): Record<string, unknown> {
     "@type": "Restaurant",
     name: site.name,
     description: t.description,
-    servesCuisine: t.cuisine,
+    servesCuisine: cuisines[locale],
+    priceRange: "€€",
     inLanguage: locale,
   };
 
-  if (site.url) data.url = `${site.url}/${locale}`;
+  if (site.legal.operatorName) data.legalName = site.legal.operatorName;
+  if (site.legal.vatId) data.vatID = site.legal.vatId;
+
+  if (site.url) {
+    data.url = `${site.url}/${locale}`;
+    data["@id"] = `${site.url}/#restaurant`;
+    data.logo = `${site.url}/brand/tinmo-logo-olive.png`;
+    data.image = photos.map((name) => `${site.url}/media/photos/${name}.webp`);
+  }
 
   const postal = site.contact.address.postal;
   if (postal) data.address = { "@type": "PostalAddress", ...postal };
@@ -57,9 +76,12 @@ export function buildRestaurantJsonLd(locale: Locale): Record<string, unknown> {
   }
 
   if (site.social.instagram.url) data.sameAs = [site.social.instagram.url];
-  if (site.menu.fullMenuUrl) data.hasMenu = site.menu.fullMenuUrl;
-  else if (site.url) data.hasMenu = `${site.url}/menu/speisekarte.pdf`;
+
+  const menuUrl = site.menu.fullMenuUrl ?? (site.url ? `${site.url}/menu/speisekarte.pdf` : null);
+  if (menuUrl) data.hasMenu = { "@type": "Menu", name: getText(locale).menus.food.name, url: menuUrl, inLanguage: ["de", "en"] };
+
   if (site.reservation.url) data.acceptsReservations = site.reservation.url;
+  else if (site.contact.phone.tel || site.contact.email.address) data.acceptsReservations = true;
 
   return data;
 }

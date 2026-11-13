@@ -8,7 +8,8 @@ import HeroVideo from "@/components/sections/HeroVideo";
 import type { HeroVideoMedia, ImageAsset } from "@/types/content";
 
 interface HeroProps {
-  name: string;
+  /** The page heading read by search engines and screen readers (the logo image alone says only "TINMO"). */
+  heading: string;
   line: string;
   menuLabel: string;
   image: ImageAsset;
@@ -18,7 +19,7 @@ interface HeroProps {
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 /** Full-screen hero: the room (photo, then looping video), the TINMO logo, one line and two buttons. */
-export default function Hero({ name, line, menuLabel, image, video }: HeroProps) {
+export default function Hero({ heading, line, menuLabel, image, video }: HeroProps) {
   return (
     <section
       id="top"
@@ -35,9 +36,11 @@ export default function Hero({ name, line, menuLabel, image, video }: HeroProps)
 
       <Container className="relative pb-12 pt-40 md:pb-20">
         <h1 id="hero-title" className="tm-enter m-0">
+          <span className="sr-only">{heading}</span>
           <Image
             src="/brand/tinmo-logo-cream.png"
-            alt={name}
+            alt=""
+            aria-hidden="true"
             width={1400}
             height={427}
             priority
