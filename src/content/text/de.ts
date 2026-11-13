@@ -67,8 +67,7 @@ export const de: TextBundle = {
   },
   menus: {
     title: "Speisekarte",
-    food: { name: "Speisekarte", note: "Sushi, Dim Sum, Udon, Curry, Sake und Getränke" },
-    lunch: { name: "Lunch", note: "Mi und Fr, 11–17 Uhr. Mit Vorspeise und Obst" },
+    food: { name: "Speisekarte", note: "Speisen, Getränke und Mittagsmenü (Mi und Fr)" },
     patisserie: { name: "Pâtisserie", note: "Matcha-Terramisu, Pistazie, Kumo und mehr" },
     view: "Ansehen",
     openPdf: "PDF öffnen",

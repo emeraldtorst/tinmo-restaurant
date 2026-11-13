@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   createContext,
   useCallback,
@@ -96,14 +97,26 @@ export function MenuProvider({ children }: { children: ReactNode }) {
               </button>
             </div>
           </div>
-          <div className="relative min-h-0 flex-1 bg-stone">
+          <div
+            key={current.id}
+            className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain bg-stone [-webkit-overflow-scrolling:touch]"
+          >
             {shown ? (
-              <iframe
-                key={current.id}
-                title={menus[current.id].name}
-                src={`${current.file}#view=FitH&navpanes=0`}
-                className="absolute inset-0 h-full w-full border-0"
-              />
+              <ol className="m-0 mx-auto flex max-w-[56rem] list-none flex-col gap-3 p-3 sm:gap-4 sm:p-5">
+                {current.pages.map((page, i) => (
+                  <li key={page.src}>
+                    <Image
+                      src={page.src}
+                      alt={`${menus[current.id].name}, ${i + 1}/${current.pages.length}`}
+                      width={page.width}
+                      height={page.height}
+                      unoptimized
+                      sizes="(min-width: 896px) 56rem, 100vw"
+                      className="h-auto w-full bg-white shadow-sm"
+                    />
+                  </li>
+                ))}
+              </ol>
             ) : null}
           </div>
         </div>
@@ -136,7 +149,7 @@ export function MenuCards({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const { open } = useMenuViewer();
   const { menus } = useLocaleText();
   return (
-    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3 md:gap-5">
+    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2 md:gap-5">
       {menuFiles.map((m) => (
         <li key={m.id}>
           <button

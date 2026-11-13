@@ -69,8 +69,7 @@ export const en = {
   },
   menus: {
     title: "Menu",
-    food: { name: "Menu", note: "Sushi, dim sum, udon, curry, sake and drinks" },
-    lunch: { name: "Lunch", note: "Wed and Fri, 11–17. Starter and fruit included" },
+    food: { name: "Menu", note: "Food, drinks and the lunch menu (Wed and Fri)" },
     patisserie: { name: "Pâtisserie", note: "Matcha terramisu, pistachio, Kumo and more" },
     view: "View",
     openPdf: "Open PDF",
