@@ -70,8 +70,8 @@ export const site: SiteConfig = {
     legalForm: "Gesellschaft mit beschränkter Haftung (GmbH)",
     seat: "Wien",
     managingDirector: "Zhenwei Chen",
-    // The company's own UID is not on the documents provided (ATU 66086656 is the notary's). Add it here once issued.
-    vatId: null,
+    // UID as provided by the owner (not shown on the Firmenbuch or GISA extracts).
+    vatId: "ATU83765105",
     companyRegister: "FN 685901 d, Handelsgericht Wien",
     tradeWording: "Gastgewerbe in der Betriebsart Restaurant (GISA-Zahl 40109084)",
     chamber: "Wirtschaftskammer Wien",
