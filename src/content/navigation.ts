@@ -7,20 +7,13 @@ import type { NavLink } from "@/types/content";
 export function getPrimaryNav(locale: Locale): NavLink[] {
   const t = getText(locale).nav;
   return [
-    { label: t.story, href: localePath(locale, "/#story") },
+    { label: t.room, href: localePath(locale, "/#room") },
     { label: t.menu, href: localePath(locale, "/#menu") },
     { label: t.visit, href: localePath(locale, "/#visit") },
   ];
 }
 
-/** Footer navigation — a superset of the primary links. */
+/** Footer navigation — same links as the header. */
 export function getFooterNav(locale: Locale): NavLink[] {
-  const t = getText(locale).nav;
-  return [
-    { label: t.story, href: localePath(locale, "/#story") },
-    { label: t.menu, href: localePath(locale, "/#menu") },
-    { label: t.atmosphere, href: localePath(locale, "/#atmosphere") },
-    { label: t.reviews, href: localePath(locale, "/#reviews") },
-    { label: t.visit, href: localePath(locale, "/#visit") },
-  ];
+  return getPrimaryNav(locale);
 }

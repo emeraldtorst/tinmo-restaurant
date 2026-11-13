@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [60, 75, 85],
+    qualities: [60, 75, 85, 100],
     // Media is self-hosted in /public/media — no remote image hosts are allowed.
   },
 };

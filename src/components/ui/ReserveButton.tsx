@@ -23,7 +23,7 @@ export default function ReserveButton({
   variant = "solid",
   tone = "light",
   size = "md",
-  arrow = true,
+  arrow = false,
   className,
 }: ReserveButtonProps) {
   const action = getReservationAction();

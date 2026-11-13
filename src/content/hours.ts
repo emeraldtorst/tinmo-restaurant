@@ -13,16 +13,17 @@ import type { HoursConfig, HoursRow } from "@/types/content";
  * Use 24-hour "HH:MM". Set both `opens` and `closes` to `null` for a closed day.
  */
 export const hoursBase: { confirmed: boolean; timezone: string | null; rows: HoursRow[] } = {
-  confirmed: false,
-  timezone: null,
+  confirmed: true,
+  timezone: "Europe/Vienna",
+  // Monday closed · Tue–Fri 11:00–22:00 · Sat, Sun and public holidays 12:00–22:00 (holidays: see text `visit.holidays`).
   rows: [
     { day: "Monday", opens: null, closes: null },
-    { day: "Tuesday", opens: "17:30", closes: "22:00" },
-    { day: "Wednesday", opens: "17:30", closes: "22:00" },
-    { day: "Thursday", opens: "17:30", closes: "22:30" },
-    { day: "Friday", opens: "17:30", closes: "23:00" },
-    { day: "Saturday", opens: "12:00", closes: "23:00" },
-    { day: "Sunday", opens: "12:00", closes: "21:00" },
+    { day: "Tuesday", opens: "11:00", closes: "22:00" },
+    { day: "Wednesday", opens: "11:00", closes: "22:00" },
+    { day: "Thursday", opens: "11:00", closes: "22:00" },
+    { day: "Friday", opens: "11:00", closes: "22:00" },
+    { day: "Saturday", opens: "12:00", closes: "22:00" },
+    { day: "Sunday", opens: "12:00", closes: "22:00" },
   ],
 };
 

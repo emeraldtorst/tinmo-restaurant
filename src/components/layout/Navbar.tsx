@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { site } from "@/content/site";
 import ReserveButton from "@/components/ui/ReserveButton";
 import { useLocaleText } from "@/components/ui/LocaleProvider";
 import LanguageSwitch from "@/components/layout/LanguageSwitch";
@@ -54,8 +54,15 @@ export default function Navbar({ links, homeHref }: NavbarProps) {
         data-tone={dark || open ? "dark" : "light"}
       >
         <div className="mx-auto flex h-[4.5rem] w-full max-w-content items-center justify-between px-gutter">
-          <Link href={homeHref} aria-label={ui.homeAria} className="font-display text-[1.625rem] font-light tracking-[0.08em]">
-            {site.name}
+          <Link href={homeHref} aria-label={ui.homeAria} className="block">
+            <Image
+              src={dark || open ? "/brand/tinmo-mark-cream.png" : "/brand/tinmo-mark-olive.png"}
+              alt=""
+              width={1400}
+              height={342}
+              priority
+              className="h-8 w-auto md:h-9"
+            />
           </Link>
 
           <nav aria-label={ui.navPrimary} className="hidden items-center gap-10 lg:flex">

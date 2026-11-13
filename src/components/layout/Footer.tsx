@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import ReserveButton from "@/components/ui/ReserveButton";
@@ -71,12 +72,9 @@ export default function Footer({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-20 flex flex-col gap-4 text-small text-bone/60 md:flex-row md:items-start md:justify-between">
-          <div>
-            <p>
-              © {new Date().getFullYear()} {site.name}. {t.rights}
-            </p>
-            <p className="mt-1">{t.designNote}</p>
-          </div>
+          <p>
+            © {new Date().getFullYear()} {site.name}. {t.rights}
+          </p>
           <ul className="m-0 flex list-none flex-wrap gap-x-6 gap-y-1 p-0">
             <li>
               <Link href={localePath(locale, "/impressum")} className="tm-link tm-tap">
@@ -91,13 +89,14 @@ export default function Footer({ locale }: { locale: Locale }) {
           </ul>
         </div>
 
-        <p
-          aria-hidden="true"
-          className="mt-10 select-none pb-6 font-display text-wordmark font-light"
-          style={{ marginInline: "-0.04em" }}
-        >
-          {site.name}
-        </p>
+        <Image
+          src="/brand/tinmo-logo-cream.png"
+          alt=""
+          width={1400}
+          height={427}
+          sizes="(min-width: 1536px) 1440px, 92vw"
+          className="mb-8 mt-14 h-auto w-full opacity-90"
+        />
       </Container>
     </footer>
   );

@@ -10,6 +10,7 @@ export interface ClientText {
   ui: TextBundle["ui"];
   nav: TextBundle["nav"];
   dialog: TextBundle["dialog"];
+  menus: TextBundle["menus"];
   placeholders: TextBundle["placeholders"];
   cuisine: string;
 }

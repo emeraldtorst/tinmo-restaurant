@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { EB_Garamond, Source_Sans_3 } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getPrimaryNav } from "@/content/navigation";
@@ -11,21 +11,21 @@ import { buildRestaurantJsonLd, serializeJsonLd } from "@/lib/structured-data";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { LocaleProvider } from "@/components/ui/LocaleProvider";
-import RevealObserver from "@/components/ui/RevealObserver";
+import BackToTop from "@/components/ui/BackToTop";
+import { MenuProvider } from "@/components/ui/MenuViewer";
 import { ReservationProvider } from "@/components/ui/ReservationDialog";
 import "../globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz", "SOFT"],
-  style: ["normal", "italic"],
+/** Display: EB Garamond, the serif of the printed menus. Body: Source Sans 3, close to the lettering under the logo. */
+const garamond = EB_Garamond({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-garamond",
   display: "swap",
 });
 
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken",
+const sourceSans = Source_Sans_3({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-source",
   display: "swap",
 });
 
@@ -84,7 +84,7 @@ export default async function RootLayout({ children, params }: LangParams & { ch
   const text = getText(lang);
 
   return (
-    <html lang={text.htmlLang} className={`${fraunces.variable} ${hanken.variable}`} suppressHydrationWarning>
+    <html lang={text.htmlLang} data-scroll-behavior="smooth" className={`${garamond.variable} ${sourceSans.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionGate }} />
       </head>
@@ -98,16 +98,19 @@ export default async function RootLayout({ children, params }: LangParams & { ch
             ui: text.ui,
             nav: text.nav,
             dialog: text.dialog,
+            menus: text.menus,
             placeholders: text.placeholders,
             cuisine: text.meta.cuisine,
           }}
         >
           <ReservationProvider>
-            <Navbar links={getPrimaryNav(lang)} homeHref={localePath(lang, "/")} />
-            <main id="main">{children}</main>
-            <Footer locale={lang} />
+            <MenuProvider>
+              <Navbar links={getPrimaryNav(lang)} homeHref={localePath(lang, "/")} />
+              <main id="main">{children}</main>
+              <Footer locale={lang} />
+            </MenuProvider>
           </ReservationProvider>
-          <RevealObserver />
+          <BackToTop />
         </LocaleProvider>
         <script
           type="application/ld+json"

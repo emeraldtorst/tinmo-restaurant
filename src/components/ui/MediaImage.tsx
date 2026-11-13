@@ -26,7 +26,7 @@ interface MediaImageProps {
   /** Override the asset's focal point. */
   objectPosition?: string;
   className?: string;
-  quality?: 60 | 75 | 85;
+  quality?: 60 | 75 | 85 | 100;
 }
 
 /**
@@ -47,7 +47,7 @@ export default function MediaImage({
   delay = 0,
   objectPosition,
   className,
-  quality = 75,
+  quality = 100,
 }: MediaImageProps) {
   const [failed, setFailed] = useState(false);
   const { ui } = useLocaleText();

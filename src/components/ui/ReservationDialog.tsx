@@ -94,8 +94,6 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
             </div>
           </dl>
 
-          <p className="mt-8 border-l border-accent pl-4 text-small text-muted-strong">{dialog.devNote}</p>
-
           <div className="mt-8 flex justify-end">
             <button type="button" className="tm-dialog__close tm-label" onClick={close}>
               {dialog.close}

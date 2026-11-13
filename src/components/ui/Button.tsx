@@ -62,7 +62,7 @@ export default function Button({
   variant = "outline",
   tone = "light",
   size = "md",
-  arrow = true,
+  arrow = false,
   className,
   children,
   ...rest

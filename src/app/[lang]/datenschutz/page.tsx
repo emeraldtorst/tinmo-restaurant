@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/ui/Container";
-import Eyebrow from "@/components/ui/Eyebrow";
-import PlaceholderNote from "@/components/ui/PlaceholderNote";
+import { site } from "@/content/site";
 import { getText } from "@/content/text";
 import { hasLocale } from "@/i18n/config";
-import { getEmail, getPhone } from "@/lib/contact";
+import { getAddress, getEmail, getPhone } from "@/lib/contact";
 import { localePath } from "@/lib/i18n";
 
 type Props = { params: Promise<{ lang: string }> };
@@ -18,25 +17,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t.title, description: t.description };
 }
 
-/** Privacy policy (Datenschutzerklärung) — a plain-language draft that must be legally reviewed before launch. */
+/** Privacy policy (Datenschutzerklärung). Company details are filled in from site.legal and site.contact. */
 export default async function PrivacyPage({ params }: Props) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const text = getText(lang);
   const t = text.legal.privacy;
-  const email = getEmail(text.placeholders).text;
-  const phone = getPhone(text.placeholders).text;
-  const fill = (s: string) => s.replace("{email}", email).replace("{phone}", phone);
+  const values: Record<string, string> = {
+    "{email}": getEmail(text.placeholders).text,
+    "{phone}": getPhone(text.placeholders).text,
+    "{company}": site.legal.operatorName ?? site.name,
+    "{address}": getAddress(text.placeholders).lines.join(", "),
+    "{register}": site.legal.companyRegister ?? "",
+  };
+  const fill = (s: string) => Object.entries(values).reduce((out, [key, value]) => out.split(key).join(value), s);
 
   return (
     <section aria-labelledby="privacy-title" className="bg-paper pb-section pt-[calc(var(--spacing-section)*0.9)]">
       <Container width="narrow">
-        <Eyebrow>{text.nav.privacy}</Eyebrow>
-        <h1 id="privacy-title" className="mt-14 text-display-md">
+        <h1 id="privacy-title" className="text-display-md">
           {t.title}
         </h1>
         <p className="mt-6 max-w-[34rem] text-body text-muted-strong">{t.intro}</p>
-        <PlaceholderNote className="mt-4">{text.legal.draftNote}</PlaceholderNote>
+        <p className="mt-3 text-small text-muted-strong">{t.updated}</p>
 
         <div className="mt-14">
           {t.sections.map((section) => (

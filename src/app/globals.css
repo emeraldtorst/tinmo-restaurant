@@ -8,21 +8,22 @@
    ========================================================================== */
 @theme static {
   /* Colour */
-  --color-paper: #f8f7f3;
-  --color-stone: #f0eee8;
-  --color-ink: #20211e;
-  --color-ink-soft: #2b2c28;
-  --color-muted: #77766f; /* decorative / >=24px only — 4.3:1 on paper */
-  --color-muted-strong: #5e5d57; /* secondary body text — ~6.2:1 on paper */
-  --color-line: #dfddd5;
-  --color-line-dark: rgba(239, 235, 224, 0.16); /* hairline on ink surfaces */
-  --color-accent: #a3281f; /* TINMO red — pairs with paper whites */
-  --color-accent-deep: #7e1d16;
-  --color-bone: #efebe0;
+  --color-paper: #fffef4; /* washi — the cream of the printed menus */
+  --color-stone: #f1efdf;
+  --color-ink: #262d16; /* deep moss */
+  --color-ink-soft: #313a1d;
+  --color-muted: #76785f; /* decorative / >=24px only */
+  --color-muted-strong: #565a41; /* secondary body text */
+  --color-line: #dcdac4;
+  --color-line-dark: rgba(243, 241, 226, 0.18); /* hairline on moss surfaces */
+  --color-accent: #5e6b2e; /* TINMO olive — sampled from the logo */
+  --color-accent-deep: #3f4a1d;
+  --color-bone: #f3f1e2;
+  --color-gold: #d99a4a; /* lantern amber — thin outlines and hover on dark surfaces only */
 
   /* Typography (families are injected by next/font in layout.tsx) */
-  --font-display: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-garamond), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-source), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --text-wordmark: clamp(5.5rem, 29vw, 34rem);
   --text-wordmark--line-height: 0.8;
@@ -84,6 +85,14 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     scroll-padding-top: 5.5rem;
+    /* No sideways shift when the scrollbar disappears under a pop-up. */
+    scrollbar-gutter: stable;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Lock the page behind an open pop-up (menu, reservation) so scrolling inside it never moves the page. */
+  html:has(dialog[open]) {
+    overflow: hidden;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -100,7 +109,7 @@
     color: var(--color-ink);
     background-color: var(--color-paper);
     /* Static paper grain: a tiny tiled SVG-noise, ~4% — no fixed overlays, no filters at paint time */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .13 0 0 0 0 .13 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .13 0 0 0 0 .13 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -111,9 +120,8 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 340;
-    font-optical-sizing: auto;
-    font-variation-settings: "SOFT" 40;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     text-wrap: balance;
     /* Long German compounds ("Datenschutzerklärung") must never push the page wider than a phone. */
     overflow-wrap: break-word;
@@ -125,9 +133,8 @@
   h3 em,
   h4 em,
   .tm-em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--color-accent);
+    font-style: normal;
+    color: inherit;
   }
   [data-tone="dark"] h1 em,
   [data-tone="dark"] h2 em,
@@ -235,11 +242,10 @@
   /* ---------- Labels ---------- */
   .tm-label {
     font-family: var(--font-sans);
-    font-size: var(--text-label);
+    font-size: 0.9375rem;
     line-height: 1.4;
     font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   .tm-eyebrow {
@@ -265,20 +271,20 @@
   .scrim-bottom {
     background: linear-gradient(
       to top,
-      rgba(32, 33, 30, 0.78) 0%,
-      rgba(32, 33, 30, 0.38) 40%,
-      rgba(32, 33, 30, 0) 72%
+      rgba(22, 27, 12, 0.82) 0%,
+      rgba(22, 27, 12, 0.4) 40%,
+      rgba(22, 27, 12, 0) 72%
     );
   }
   .scrim-top {
-    background: linear-gradient(to bottom, rgba(32, 33, 30, 0.45), rgba(32, 33, 30, 0) 22%);
+    background: linear-gradient(to bottom, rgba(22, 27, 12, 0.5), rgba(22, 27, 12, 0) 24%);
   }
   .scrim-red {
     background: rgba(163, 40, 31, 0.5);
     mix-blend-mode: multiply;
   }
   .scrim-flat {
-    background: rgba(32, 33, 30, 0.45);
+    background: rgba(30, 38, 16, 0.5);
   }
 
   /* ---------- Buttons ---------- */
@@ -301,11 +307,10 @@
     min-height: 3.25rem;
     padding: 0 1.75rem;
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
+    font-size: 1rem;
     line-height: 1;
     font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     text-decoration: none;
     white-space: nowrap;
     color: var(--btn-fg);
@@ -328,7 +333,7 @@
   .tm-btn[data-size="sm"] {
     min-height: 2.75rem;
     padding: 0 1.25rem;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
   }
   .tm-btn[data-size="lg"] {
     min-height: 3.75rem;
@@ -347,8 +352,11 @@
     --btn-wipe-fg: var(--color-paper);
   }
   .tm-btn[data-variant="solid"][data-tone="dark"] {
-    --btn-wipe: var(--color-paper);
-    --btn-wipe-fg: var(--color-accent);
+    --btn-bg: var(--color-bone);
+    --btn-fg: var(--color-ink);
+    --btn-border: var(--color-bone);
+    --btn-wipe: var(--color-gold);
+    --btn-wipe-fg: var(--color-ink);
   }
   .tm-btn[data-variant="outline"] {
     --btn-bg: transparent;
@@ -564,21 +572,17 @@
     transform: scaleX(0);
   }
 
-  /* Editorial image reveal: clip wipe + inner scale settle */
+  /* Image reveal: a soft fade-up. (The old clip-wipe + zoom repainted large photos every frame, which felt
+     janky on phones, so it is gone.) */
   [data-reveal="image"] {
-    transition-duration: 1200ms;
+    transition-duration: 700ms;
   }
   html.motion-ready [data-reveal="image"]:not([data-in]) {
-    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
   }
   [data-reveal="image"] img {
-    scale: 1;
-    transition:
-      scale 1600ms var(--ease-tinmo) var(--d, 0ms),
-      transform 900ms var(--ease-tinmo);
-  }
-  html.motion-ready [data-reveal="image"]:not([data-in]) img {
-    scale: 1.12;
+    transition: transform 900ms var(--ease-tinmo);
   }
 
   /* Headline words rise out of a mask */
@@ -657,3 +661,69 @@
     clip-path: none !important;
   }
 }
+
+/* ==========================================================================
+   Menu pop-out, hero stamp, ticker
+   ========================================================================== */
+@layer components {
+  .tm-dialog {
+    overscroll-behavior: contain;
+  }
+  .tm-dialog--wide {
+    width: min(84rem, calc(100vw - 1rem));
+    height: calc(100svh - 1rem);
+    max-height: none;
+    overflow: hidden;
+  }
+
+  /* Back-to-top button */
+  .tm-top {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    z-index: 30;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-ink);
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-paper) 92%, transparent);
+    color: var(--color-ink);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    pointer-events: none;
+    transition:
+      opacity var(--dur-base) var(--ease-tinmo),
+      transform var(--dur-base) var(--ease-tinmo),
+      background-color var(--dur-fast);
+  }
+  .tm-top[data-show="true"] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  @media (hover: hover) {
+    .tm-top:hover {
+      background: var(--color-ink);
+      color: var(--color-paper);
+    }
+  }
+
+}
+
+
+
+
+
+
+/* A light, uniform grade so photographs taken under different lamps sit together (they were very saturated). */
+@layer components {
+  .tm-media img {
+    filter: saturate(0.9) contrast(1.02);
+  }
+}
+
+

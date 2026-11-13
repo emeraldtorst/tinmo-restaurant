@@ -9,14 +9,6 @@
 /*  Media                                                                     */
 /* -------------------------------------------------------------------------- */
 
-export interface MediaCredit {
-  creator: string;
-  /** Page of the asset on the provider's site. */
-  sourceUrl: string;
-  license: string;
-  licenseUrl: string;
-}
-
 export interface ImageAsset {
   /** Public URL, e.g. `/media/story/interior.webp`. */
   src: string;
@@ -30,7 +22,6 @@ export interface ImageAsset {
   color?: string;
   /** CSS `object-position` focal point, e.g. `"50% 35%"`. */
   objectPosition?: string;
-  credit: MediaCredit;
 }
 
 export interface VideoVariant {
@@ -38,21 +29,14 @@ export interface VideoVariant {
   type: "video/mp4" | "video/webm";
 }
 
-export interface HeroMedia {
-  /** Landscape LCP poster (also the reduced-motion / failed-video fallback). */
-  poster: ImageAsset;
-  /** Portrait poster for narrow, tall screens. */
-  posterPortrait: ImageAsset;
+export interface HeroVideoMedia {
   /** One-sentence description of what the (decorative) video shows. */
   videoLabel: string;
-  durationSeconds: number;
   /** Ordered by preference; the browser picks the first type it can play. */
   variants: {
     landscape: VideoVariant[];
-    landscapeLite: VideoVariant[];
     portrait: VideoVariant[];
   };
-  credit: MediaCredit;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -132,6 +116,12 @@ export interface LegalConfig {
   /** Name / company name of the operator and media owner. `null` = still to be added. */
   operatorName: string | null;
   legalForm: string | null;
+  /** Registered office (Sitz), e.g. "Wien". */
+  seat: string | null;
+  /** Managing director(s). Name only — never a birth date or private address. */
+  managingDirector: string | null;
+  /** Trade wording from GISA, e.g. "Gastgewerbe in der Betriebsart Restaurant". */
+  tradeWording: string | null;
   /** Austrian VAT ID, e.g. "ATU12345678". */
   vatId: string | null;
   /** Firmenbuchnummer + court, e.g. "FN 123456 a, Handelsgericht Wien". */
@@ -196,52 +186,8 @@ export interface HoursConfig {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Story                                                                     */
+/*  Menu                                                                      */
 /* -------------------------------------------------------------------------- */
-
-export interface Figure {
-  image: ImageAsset;
-  caption: string;
-}
-
-export interface StoryContent {
-  isPlaceholder: boolean;
-  placeholderNote: string;
-  eyebrow: string;
-  heading: RichText;
-  lead: string;
-  principles: { label: string; text: string }[];
-  figures: {
-    interior: Figure;
-    chef: Figure;
-    ingredients: Figure;
-    table: Figure;
-  };
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Signature dishes + menu                                                   */
-/* -------------------------------------------------------------------------- */
-
-export interface Dish {
-  id: string;
-  name: string;
-  description: string;
-  /** Price text exactly as it should appear, or `null` to hide it. */
-  price: string | null;
-  image: ImageAsset;
-  /** Short label such as "To share" or "Vegetarian". */
-  tag?: string;
-}
-
-export interface DishesContent {
-  isPlaceholder: boolean;
-  placeholderNote: string;
-  eyebrow: string;
-  heading: RichText;
-  intro: string;
-  dishes: Dish[];
-}
 
 export interface MenuItem {
   name: string;
@@ -269,87 +215,10 @@ export interface MenuContent {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Atmosphere gallery                                                        */
-/* -------------------------------------------------------------------------- */
-
-export interface GalleryItem {
-  id: string;
-  image: ImageAsset;
-  caption: string;
-}
-
-export interface GalleryContent {
-  eyebrow: string;
-  heading: RichText;
-  intro: string;
-  /** The layout is composed for exactly this many items, in this order. */
-  items: GalleryItem[];
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Reviews                                                                   */
-/* -------------------------------------------------------------------------- */
-
-export type ReviewSourceKind = "illustrative" | "google" | "manual";
-
-export interface ReviewSource {
-  kind: ReviewSourceKind;
-  /** Human label, e.g. "Illustrative guest notes". */
-  label: string;
-  /** Google Maps / Business Profile URL. `null` until the real listing exists. */
-  listingUrl: string | null;
-  /** True while the notes are samples, not real reviews. */
-  isPlaceholder: boolean;
-  /** Disclosure shown to visitors while `isPlaceholder`. */
-  disclosure: string | null;
-}
-
-export interface Review {
-  id: string;
-  quote: string;
-  /** Only ever set for genuine, sourced reviews. */
-  author: string | null;
-  /** 1–5. Only ever set for genuine, sourced reviews. */
-  rating: number | null;
-  /** ISO date of a genuine review. */
-  date: string | null;
-  illustrative: boolean;
-}
-
-export interface ReviewsContent {
-  eyebrow: string;
-  heading: RichText;
-  source: ReviewSource;
-  reviews: Review[];
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Section copy + navigation                                                 */
+/*  Navigation                                                                */
 /* -------------------------------------------------------------------------- */
 
 export interface NavLink {
   label: string;
   href: string;
-}
-
-export interface SectionCopy {
-  hero: {
-    eyebrow: string;
-    tagline: string;
-    menuLabel: string;
-  };
-  visit: {
-    eyebrow: string;
-    heading: RichText;
-    intro: string;
-  };
-  reserve: {
-    eyebrow: string;
-    heading: RichText;
-    text: string;
-  };
-  footer: {
-    blurb: string;
-    designNote: string;
-  };
 }

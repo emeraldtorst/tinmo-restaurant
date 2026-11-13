@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
 import { locales } from "@/i18n/config";
 
-const paths = ["", "/menu", "/impressum", "/datenschutz"];
+const paths = ["", "/impressum", "/datenschutz"];
 
 /** One entry per page and language, with hreflang alternates. Empty until a real domain is configured. */
 export default function sitemap(): MetadataRoute.Sitemap {

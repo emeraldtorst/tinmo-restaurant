@@ -1,7 +1,4 @@
 import Container from "@/components/ui/Container";
-import Eyebrow from "@/components/ui/Eyebrow";
-import RevealText from "@/components/ui/RevealText";
-import PlaceholderNote from "@/components/ui/PlaceholderNote";
 import Button from "@/components/ui/Button";
 import ReserveButton from "@/components/ui/ReserveButton";
 import MapEmbed from "@/components/ui/MapEmbed";
@@ -11,7 +8,6 @@ import { getText } from "@/content/text";
 import type { Locale } from "@/i18n/config";
 import { getAddress, getEmail, getPhone } from "@/lib/contact";
 import { getDirections } from "@/lib/directions";
-import { localePath } from "@/lib/i18n";
 
 function Value({ text, href, placeholder }: { text: string; href: string | null; placeholder: boolean }) {
   if (href) {
@@ -37,16 +33,13 @@ export default function VisitSection({ locale }: { locale: Locale }) {
   return (
     <section id="visit" aria-labelledby="visit-title" className="overflow-x-clip bg-paper py-section">
       <Container>
-        <Eyebrow>{t.eyebrow}</Eyebrow>
-
-        <div className="tm-grid mt-14 md:mt-20">
+        <div className="tm-grid">
           <div className="col-span-6 md:col-span-5">
-            <RevealText id="visit-title" text={t.heading} className="text-display-md" />
-            <p className="mt-6 max-w-[26rem] text-body text-muted-strong" data-reveal="fade-up">
-              {t.intro}
-            </p>
+                <h2 id="visit-title" className="text-display-md">
+              {t.heading}
+            </h2>
 
-            <div className="mt-8 flex flex-wrap gap-3" data-reveal="fade-up">
+            <div className="mt-8 flex flex-wrap gap-3">
               <ReserveButton />
               {directions.href ? (
                 <Button href={directions.href} variant="outline">
@@ -113,7 +106,7 @@ export default function VisitSection({ locale }: { locale: Locale }) {
                   </tr>
                 </tbody>
               </table>
-              {!hours.confirmed ? <PlaceholderNote className="mt-2">{hours.note}</PlaceholderNote> : null}
+              <p className="mt-1 text-small text-muted-strong">{t.holidays}</p>
             </div>
           </div>
 
@@ -122,7 +115,6 @@ export default function VisitSection({ locale }: { locale: Locale }) {
               <MapEmbed
                 embedUrl={site.location.embedUrl}
                 mapsUrl={site.location.mapsUrl}
-                privacyHref={localePath(locale, "/datenschutz")}
                 labels={t.map}
               />
             </div>

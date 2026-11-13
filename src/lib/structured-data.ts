@@ -58,6 +58,7 @@ export function buildRestaurantJsonLd(locale: Locale): Record<string, unknown> {
 
   if (site.social.instagram.url) data.sameAs = [site.social.instagram.url];
   if (site.menu.fullMenuUrl) data.hasMenu = site.menu.fullMenuUrl;
+  else if (site.url) data.hasMenu = `${site.url}/menu/speisekarte.pdf`;
   if (site.reservation.url) data.acceptsReservations = site.reservation.url;
 
   return data;

@@ -18,18 +18,18 @@ export const site: SiteConfig = {
   contact: {
     address: {
       // e.g. ["12 Example Street", "Sample Town", "AB1 2CD"]
-      lines: ["Marc-Aurel-Straße 2A", "1010 Wien"],
+      lines: ["Marc-Aurel-Straße 2a/1", "1010 Wien"],
       // Fill this too so directions and structured data can use it.
       postal: {
-        streetAddress: "Marc-Aurel-Straße 2A",
+        streetAddress: "Marc-Aurel-Straße 2a/1",
         addressLocality: "Wien",
         postalCode: "1010",
         addressCountry: "AT",
       },
     },
     phone: {
-      display: "+43 660 1315115",
-      tel: "+436601315115",
+      display: "+43 660 9999389",
+      tel: "+436609999389",
     },
     email: {
       address: "info@tinmo.at",
@@ -49,13 +49,13 @@ export const site: SiteConfig = {
   },
 
   location: {
-    // Confirmed Google Maps listing (provided by the owner).
+    // The TINMO listing on Google Maps.
     mapsUrl:
-      "https://www.google.com/maps/place/Miso%E2%80%A2U+Restaurant/@48.211518,16.3699785,17z/data=!3m1!4b1!4m6!3m5!1s0x476d072f7ddc7e19:0x994f1ded4a0433eb!8m2!3d48.2115145!4d16.3725534!16s%2Fg%2F11mc9fkfh3",
-    embedUrl: "https://www.google.com/maps?q=48.2115145,16.3725534&z=17&output=embed",
+      "https://www.google.com/maps/place/Tinmo/@48.211525,16.3699775,17z/data=!3m1!4b1!4m6!3m5!1s0x476d07ce5c6b26f7:0x90e510de16a27386!8m2!3d48.2115215!4d16.3725524!16s%2Fg%2F11z_d8dyln",
+    embedUrl: "https://www.google.com/maps?q=48.2115215,16.3725524&z=17&output=embed",
     directionsUrl: null, // generated from lat/lng below
-    lat: 48.2115145,
-    lng: 16.3725534,
+    lat: 48.2115215,
+    lng: 16.3725524,
   },
 
   menu: {
@@ -63,13 +63,18 @@ export const site: SiteConfig = {
     fullMenuUrl: null,
   },
 
-  // Legal notice (Impressum) details. Null = shown as "to be added" on /impressum.
+  // Legal notice (Impressum) details, from the Firmenbuch extract (18.08.2026) and the GISA extract (13.11.2026).
+  // A `null` row is simply left out of /impressum.
   legal: {
-    operatorName: null,
-    legalForm: null,
+    operatorName: "KUMO Cuisine GmbH",
+    legalForm: "Gesellschaft mit beschränkter Haftung (GmbH)",
+    seat: "Wien",
+    managingDirector: "Zhenwei Chen",
+    // The company's own UID is not on the documents provided (ATU 66086656 is the notary's). Add it here once issued.
     vatId: null,
-    companyRegister: null,
-    chamber: null,
-    tradeAuthority: null,
+    companyRegister: "FN 685901 d, Handelsgericht Wien",
+    tradeWording: "Gastgewerbe in der Betriebsart Restaurant (GISA-Zahl 40109084)",
+    chamber: "Wirtschaftskammer Wien",
+    tradeAuthority: "Magistrat der Stadt Wien",
   },
 };

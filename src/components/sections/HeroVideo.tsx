@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useLocaleText } from "@/components/ui/LocaleProvider";
-import type { HeroMedia } from "@/types/content";
+import type { HeroVideoMedia } from "@/types/content";
 
 interface NavigatorWithConnection extends Navigator {
   connection?: { saveData?: boolean };
@@ -19,7 +19,7 @@ const isNarrow = () => window.matchMedia("(max-width: 820px)").matches;
  * Not mounted visually when: reduced motion, Save-Data, or the video errors — the poster
  * underneath (rendered by <Hero/>) is then the whole hero. Pauses while off-screen.
  */
-export default function HeroVideo({ media }: { media: HeroMedia }) {
+export default function HeroVideo({ media }: { media: HeroVideoMedia }) {
   const { ui } = useLocaleText();
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);

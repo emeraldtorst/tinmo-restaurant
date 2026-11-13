@@ -1,54 +1,38 @@
 import { notFound } from "next/navigation";
 import AtmosphereGallery from "@/components/sections/AtmosphereGallery";
-import GuestReviews from "@/components/sections/GuestReviews";
 import Hero from "@/components/sections/Hero";
 import ReservationCTA from "@/components/sections/ReservationCTA";
 import SignatureDishes from "@/components/sections/SignatureDishes";
-import StorySection from "@/components/sections/StorySection";
 import VisitSection from "@/components/sections/VisitSection";
-import { getDishes } from "@/content/dishes";
-import { getGallery } from "@/content/gallery";
-import { getHero, getMedia } from "@/content/localized-media";
+import { getMedia } from "@/content/localized-media";
+import { heroVideo } from "@/content/media";
 import { site } from "@/content/site";
-import { getStory } from "@/content/story";
 import { getText } from "@/content/text";
 import { hasLocale } from "@/i18n/config";
-import { localePath } from "@/lib/i18n";
-import { getReviews } from "@/lib/reviews";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const text = getText(lang);
-  const reviews = await getReviews(lang);
+  const m = getMedia(lang);
 
   return (
     <>
       <Hero
         name={site.name}
-        copy={{ ...text.hero, tagline: text.meta.tagline }}
-        menuHref={localePath(lang, "/#menu")}
-        media={getHero(lang)}
+        line={text.hero.line}
+        menuLabel={text.hero.menuLabel}
+        image={m.interior5}
+        video={{ videoLabel: text.alt.heroVideo, variants: heroVideo.variants }}
       />
-      <StorySection story={getStory(lang)} />
+      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.interior2} trio={[m.interior1, m.interior3, m.interior4]} />
       <SignatureDishes
-        content={getDishes(lang)}
-        menuHref={site.menu.fullMenuUrl ?? localePath(lang, "/menu")}
-        menuLabel={text.dishes.viewMenu}
-        plateLabel={text.dishes.plate}
-      />
-      <AtmosphereGallery content={getGallery(lang)} />
-      <GuestReviews
-        content={reviews}
-        labels={{
-          illustrative: text.reviews.illustrative,
-          googlePending: text.reviews.googlePending,
-          googlePendingReason: text.reviews.googlePendingReason,
-          readMore: text.reviews.readMore,
-        }}
+        heading={text.dishes.heading}
+        intro={text.dishes.intro}
+        items={[m.food1, m.food2, m.food3, m.food4, m.dessert1, m.dessert2].map((image, i) => ({ image, caption: text.dishes.captions[i] }))}
       />
       <VisitSection locale={lang} />
-      <ReservationCTA copy={text.reserve} image={getMedia(lang).ctaEvening} placeholders={text.placeholders} />
+      <ReservationCTA heading={text.reserve.heading} line={text.reserve.line} image={m.interior5} placeholders={text.placeholders} />
     </>
   );
 }
