@@ -39,7 +39,7 @@ export const en = {
   },
   nav: {
     menu: "Menu",
-    room: "Room",
+    room: "Restaurant",
     visit: "Visit",
     imprint: "Legal notice",
     privacy: "Privacy",

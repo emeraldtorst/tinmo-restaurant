@@ -37,7 +37,7 @@ export const de: TextBundle = {
   },
   nav: {
     menu: "Speisekarte",
-    room: "Raum",
+    room: "Restaurant",
     visit: "Besuch",
     imprint: "Impressum",
     privacy: "Datenschutz",
@@ -77,7 +77,7 @@ export const de: TextBundle = {
     tabs: "Speisekarten",
   },
   gallery: {
-    heading: "The Tinmo Restaurant",
+    heading: "Das Restaurant TINMO",
     intro: "Sanftes Laternenlicht, warme Holztöne und eine einladende Bar schaffen eine Atmosphäre zum Ankommen und Verweilen. Gedämpftes Licht, liebevolle Details und ein Hauch fernöstlicher Eleganz machen TINMO zu einem besonderen Ort mitten in Wien.",
   },
   visit: {
