@@ -57,7 +57,7 @@ export const de: TextBundle = {
     close: "Schließen",
   },
   hero: {
-    line: "Sushi, Dim Sum und Udon bei Laternenlicht, mitten in Wien.",
+    line: "Wo asiatische Aromen auf die Wärme von Laternenlicht treffen. Genießen Sie frisch zubereitetes Sushi, feines Dim Sum und köstliche Udon an einem Ort, der zum Teilen, Genießen und Zusammenkommen gemacht ist. Willkommen bei TINMO, Wien.",
     menuLabel: "Speisekarte ansehen",
   },
   dishes: {

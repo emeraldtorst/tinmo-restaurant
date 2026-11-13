@@ -59,7 +59,7 @@ export const en = {
     close: "Close",
   },
   hero: {
-    line: "Sushi, dim sum and udon by lantern light, in the heart of Vienna.",
+    line: "Where Asian flavours meet the warmth of lantern light. Enjoy freshly made sushi, delicate dim sum and delicious udon in a place made for sharing, savouring and coming together. Welcome to TINMO, Vienna.",
     menuLabel: "View the menu",
   },
   dishes: {

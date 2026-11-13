@@ -45,7 +45,7 @@ export default function Hero({ name, line, menuLabel, image, video }: HeroProps)
             className="h-auto w-[min(82vw,44rem)]"
           />
         </h1>
-        <p className="tm-enter mt-6 max-w-[26rem] font-display text-lead" style={delay(200)}>
+        <p className="tm-enter mt-6 max-w-[38rem] font-display text-[1.0625rem] leading-snug md:text-lead" style={delay(200)}>
           {line}
         </p>
         <div className="tm-enter mt-8 flex flex-wrap gap-3" style={delay(350)}>
