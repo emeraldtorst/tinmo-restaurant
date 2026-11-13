@@ -6,11 +6,13 @@ import type { ImageAsset } from "@/types/content";
 interface FoodProps {
   heading: string;
   intro: string;
+  /** The sushi photographs shown large at the top: one landscape, one portrait (same height beside it). */
+  feature: { wide: ImageAsset; tall: ImageAsset; caption: string };
   items: Array<{ image: ImageAsset; caption: string }>;
 }
 
-/** The food: six square photographs on deep moss, each named after its dish on the menu, then the three menus. */
-export default function SignatureDishes({ heading, intro, items }: FoodProps) {
+/** The food: the sushi first (landscape + portrait), then six square photographs named after their dishes, then the menus. */
+export default function SignatureDishes({ heading, intro, feature, items }: FoodProps) {
   return (
     <section id="menu" aria-labelledby="menu-title" data-tone="dark" className="bg-ink py-section text-bone">
       <Container>
@@ -19,7 +21,23 @@ export default function SignatureDishes({ heading, intro, items }: FoodProps) {
         </h2>
         <p className="mt-5 max-w-[34rem] font-display text-lead text-bone/80">{intro}</p>
 
-        <ul className="m-0 mt-10 grid list-none grid-cols-2 gap-x-3 gap-y-8 p-0 md:mt-16 md:grid-cols-3 md:gap-x-5 md:gap-y-12">
+        <div className="mt-10 grid grid-cols-1 gap-3 md:mt-16 md:grid-cols-3 md:gap-5">
+          <MediaImage
+            asset={feature.wide}
+            ratio="css"
+            sizes="(min-width: 768px) 66vw, 100vw"
+            className="aspect-[4/3] md:col-span-2"
+          />
+          <MediaImage
+            asset={feature.tall}
+            ratio="css"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            className="aspect-[3/4] md:aspect-auto md:h-full"
+          />
+        </div>
+        <p className="mt-3 font-display text-[1.125rem] leading-snug md:text-[1.25rem]">{feature.caption}</p>
+
+        <ul className="m-0 mt-12 grid list-none grid-cols-2 gap-x-3 gap-y-8 p-0 md:mt-16 md:grid-cols-3 md:gap-x-5 md:gap-y-12">
           {items.map(({ image, caption }) => (
             <li key={image.src}>
               <figure className="m-0">

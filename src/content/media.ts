@@ -5,10 +5,10 @@ import type { HeroVideoMedia, ImageAsset } from "@/types/content";
  * To swap a picture: optimise it with `node scripts/optimize-image.mjs <input> public/media/photos/<name> --grade none`
  * and update the file here. `objectPosition` is the focal point used when the photo is cropped.
  */
-const photo = (name: string, color: string, objectPosition = "50% 50%"): ImageAsset => ({
+const photo = (name: string, color: string, objectPosition = "50% 50%", width = 3024, height = 2016): ImageAsset => ({
   src: `/media/photos/${name}.webp`,
-  width: 3024,
-  height: 2016,
+  width,
+  height,
   alt: "",
   color,
   objectPosition,
@@ -26,6 +26,9 @@ export const media = {
   interior3: photo("interior3", "#743f18"),
   interior4: photo("interior4", "#532c10", "46% 35%"),
   interior5: photo("interior5", "#663010"),
+  sushi1: photo("sushi1", "#a08454", "45% 55%", 1600, 1200),
+  sushi2: photo("sushi2", "#a08755", "50% 50%", 1200, 1600),
+  sushi3: photo("sushi3", "#ad9266", "50% 72%", 1200, 1600),
 } satisfies Record<string, ImageAsset>;
 
 export type MediaKey = keyof typeof media;

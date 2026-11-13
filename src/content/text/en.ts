@@ -65,11 +65,13 @@ export const en = {
   dishes: {
     heading: "From the kitchen",
     intro: "Sushi and maki, dim sum, udon, Thai curry, and pâtisserie to finish.",
+    featureCaption: "Dragon Roll and Pistachio Roll",
     captions: ["Korean Chicken","Salmon Teriyaki","Pumpkin croquettes on stir-fried udon","Cashew Chicken","Tropical Cheesecake","Matcha Terramisu"],
   },
   menus: {
     title: "Menu",
-    food: { name: "Menu", note: "Food, drinks and the lunch menu (Wed and Fri)" },
+    lunch: { name: "Lunch", note: "Wed and Fri, 11–17. Starter and fruit included" },
+    food: { name: "Menu", note: "Sushi, dim sum, udon, curry, sake and drinks" },
     patisserie: { name: "Pâtisserie", note: "Matcha terramisu, pistachio, Kumo and more" },
     view: "View",
     openPdf: "Open PDF",
@@ -126,6 +128,9 @@ export const en = {
     interior3: "Tables and chairs under exposed ducts, the bar in the background.",
     interior4: "A paper lantern and hanging glasses above the long wooden bar.",
     interior5: "A table in front of the blossom-tree mural, lit by paper lanterns.",
+    sushi1: "Dragon Roll with seared salmon and spicy mayo, and Pistachio Roll with avocado and pistachios, on dark plates.",
+    sushi2: "Both sushi plates from above, with a soy sauce dish and a koi teapot.",
+    sushi3: "Sushi on a wooden table in front of the blossom mural, blue velvet chairs behind.",
     heroVideo: "A cook tosses food in a wok over a roaring gas flame in a busy kitchen.",
   } as Record<string, string>,
   legal: {

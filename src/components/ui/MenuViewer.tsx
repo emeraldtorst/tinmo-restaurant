@@ -53,6 +53,10 @@ export function MenuProvider({ children }: { children: ReactNode }) {
   };
 
   const current = menuFiles.find((m) => m.id === active) ?? menuFiles[0];
+  // Number the pages across spreads (for the image descriptions).
+  let counter = 0;
+  const numbered = current.spreads.map((spread) => spread.map((page) => ({ page, n: ++counter })));
+  const totalPages = counter;
 
   return (
     <MenuContext.Provider value={value}>
@@ -102,18 +106,24 @@ export function MenuProvider({ children }: { children: ReactNode }) {
             className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain bg-stone [-webkit-overflow-scrolling:touch]"
           >
             {shown ? (
-              <ol className="m-0 mx-auto flex max-w-[56rem] list-none flex-col gap-3 p-3 sm:gap-4 sm:p-5">
-                {current.pages.map((page, i) => (
-                  <li key={page.src}>
-                    <Image
-                      src={page.src}
-                      alt={`${menus[current.id].name}, ${i + 1}/${current.pages.length}`}
-                      width={page.width}
-                      height={page.height}
-                      unoptimized
-                      sizes="(min-width: 896px) 56rem, 100vw"
-                      className="h-auto w-full bg-white shadow-sm"
-                    />
+              <ol className="m-0 mx-auto flex max-w-[56rem] list-none flex-col gap-3 p-3 sm:gap-4 sm:p-5 xl:max-w-[80rem] xl:gap-6">
+                {numbered.map((spread) => (
+                  <li
+                    key={spread[0].page.src}
+                    className={cn("grid grid-cols-1 gap-3 sm:gap-4 xl:gap-0", spread.length === 2 ? "xl:grid-cols-2" : "xl:mx-auto xl:w-1/2")}
+                  >
+                    {spread.map(({ page, n }) => (
+                      <Image
+                        key={page.src}
+                        src={page.src}
+                        alt={`${menus[current.id].name}, ${n}/${totalPages}`}
+                        width={page.width}
+                        height={page.height}
+                        unoptimized
+                        sizes="(min-width: 1280px) 40rem, (min-width: 896px) 56rem, 100vw"
+                        className="h-auto w-full bg-white shadow-sm"
+                      />
+                    ))}
                   </li>
                 ))}
               </ol>
@@ -149,7 +159,7 @@ export function MenuCards({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const { open } = useMenuViewer();
   const { menus } = useLocaleText();
   return (
-    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2 md:gap-5">
+    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3 md:gap-5">
       {menuFiles.map((m) => (
         <li key={m.id}>
           <button

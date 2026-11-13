@@ -63,11 +63,13 @@ export const de: TextBundle = {
   dishes: {
     heading: "Aus der Küche",
     intro: "Sushi und Maki, Dim Sum, Udon, Thai Curry, zum Schluss Pâtisserie.",
+    featureCaption: "Dragon Roll und Pistachio Roll",
     captions: ["Korean Chicken","Lachs Teriyaki","Kürbiskroketten auf gebratenen Udon","Cashew Chicken","Tropischer Cheesecake","Matcha-Terramisu"],
   },
   menus: {
     title: "Speisekarte",
-    food: { name: "Speisekarte", note: "Speisen, Getränke und Mittagsmenü (Mi und Fr)" },
+    lunch: { name: "Lunch", note: "Mi und Fr, 11–17 Uhr. Mit Vorspeise und Obst" },
+    food: { name: "Speisekarte", note: "Sushi, Dim Sum, Udon, Curry, Sake und Getränke" },
     patisserie: { name: "Pâtisserie", note: "Matcha-Terramisu, Pistazie, Kumo und mehr" },
     view: "Ansehen",
     openPdf: "PDF öffnen",
@@ -124,6 +126,9 @@ export const de: TextBundle = {
     interior3: "Tische und Stühle unter freiliegenden Lüftungsrohren, im Hintergrund die Bar.",
     interior4: "Eine Papierlaterne und hängende Gläser über der langen Holzbar.",
     interior5: "Ein Tisch vor dem Wandbild mit Blütenbäumen, beleuchtet von Papierlaternen.",
+    sushi1: "Dragon Roll mit flambiertem Lachs und Spicy Mayo sowie Pistachio Roll mit Avocado und Pistazien auf dunklen Platten.",
+    sushi2: "Beide Sushi-Platten von oben, mit Sojasauce und einer Teekanne mit Koi.",
+    sushi3: "Sushi auf einem Holztisch vor der Wand mit Blütenbäumen, dahinter blaue Samtstühle.",
     heroVideo: "Ein Koch schwenkt Essen im Wok über einer lodernden Gasflamme in einer geschäftigen Küche.",
   },
   legal: {

@@ -25,10 +25,11 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         image={m.interior5}
         video={{ videoLabel: text.alt.heroVideo, variants: heroVideo.variants }}
       />
-      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.interior2} trio={[m.interior1, m.interior3, m.interior4]} />
+      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.interior2} photos={[m.interior1, m.interior3, m.interior4, m.sushi3]} />
       <SignatureDishes
         heading={text.dishes.heading}
         intro={text.dishes.intro}
+        feature={{ wide: m.sushi1, tall: m.sushi2, caption: text.dishes.featureCaption }}
         items={[m.food1, m.food2, m.food3, m.food4, m.dessert1, m.dessert2].map((image, i) => ({ image, caption: text.dishes.captions[i] }))}
       />
       <VisitSection locale={lang} />

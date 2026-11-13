@@ -33,27 +33,33 @@ export default function Footer({ locale }: { locale: Locale }) {
     <footer data-tone="dark" className="bg-ink text-bone">
       <Container className="pt-20 md:pt-28">
         <div className="mb-16 h-px bg-line-dark" aria-hidden="true" />
-        <div className="tm-grid gap-y-12">
-          <div className="col-span-6 text-small md:col-span-4">
+        <div className="tm-grid gap-y-10 md:gap-y-12">
+          <div className="col-span-2 text-[0.8125rem] leading-snug md:col-span-4 md:text-small md:leading-normal">
             <p className="tm-label">{t.visit}</p>
-            <p className="mt-4 text-bone/75">{address.lines.join(", ")}</p>
+            <p className="mt-4 text-bone/75">
+              {address.lines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
             <p className="mt-3 text-bone/75">
               <Link href={localePath(locale, "/#visit")} className="tm-link tm-tap">
                 {hoursBase.confirmed ? t.openingHours : text.visit.hoursLabel}
               </Link>
               {hoursBase.confirmed ? null : <span className="block text-bone/60">{t.placeholderTimes}</span>}
             </p>
-            <div className="mt-6">
+            <div className="mt-6 hidden md:block">
               <ReserveButton tone="dark" size="sm" />
             </div>
           </div>
 
-          <nav aria-label={text.ui.navFooter} className="col-span-6 md:col-span-3 md:col-start-6">
+          <nav aria-label={text.ui.navFooter} className="col-span-2 md:col-span-3 md:col-start-6">
             <p className="tm-label">{t.navigate}</p>
             <ul className="m-0 mt-4 list-none p-0">
               {getFooterNav(locale).map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="tm-link tm-tap font-display text-display-sm font-light">
+                  <Link href={link.href} className="tm-link tm-tap font-display text-[1.125rem] font-light leading-snug md:text-display-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -61,13 +67,21 @@ export default function Footer({ locale }: { locale: Locale }) {
             </ul>
           </nav>
 
-          <div className="col-span-6 text-small md:col-span-3 md:col-start-10">
+          <div className="col-span-2 text-[0.8125rem] leading-snug md:col-span-3 md:col-start-10 md:text-small md:leading-normal">
             <p className="tm-label">{t.contact}</p>
-            <ul className="m-0 mt-4 grid list-none gap-3 p-0">
+            <ul className="m-0 mt-4 grid list-none gap-3 p-0 [overflow-wrap:anywhere]">
               <li><Item text={phone.text} href={phone.href} /></li>
               <li><Item text={email.text} href={email.href} /></li>
-              <li><Item text={instagram.text} href={instagram.href} /></li>
+              {instagram.isPlaceholder ? null : (
+                <li>
+                  <Item text={instagram.text} href={instagram.href} />
+                </li>
+              )}
             </ul>
+          </div>
+
+          <div className="col-span-6 md:hidden">
+            <ReserveButton tone="dark" size="sm" />
           </div>
         </div>
 
