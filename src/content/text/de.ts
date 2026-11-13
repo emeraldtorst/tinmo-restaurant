@@ -62,7 +62,7 @@ export const de: TextBundle = {
   },
   dishes: {
     heading: "Aus der Küche",
-    intro: "Sushi und Maki, Dim Sum, Udon, Thai Curry, zum Schluss Pâtisserie.",
+    intro: "Von kunstvoll zubereitetem Sushi und feinen Maki über handgemachte Dim Sum und aromatische Udon bis hin zu würzigen Thai Currys. Frisch zubereitet, voller Geschmack und mit Liebe zum Detail. Zum süßen Abschluss erwartet Sie eine feine Auswahl an Pâtisserie.",
     featureCaption: "Dragon Roll und Pistachio Roll",
     captions: ["Korean Chicken","Lachs Teriyaki","Kürbiskroketten auf gebratenen Udon","Cashew Chicken","Tropischer Cheesecake","Matcha-Terramisu"],
   },
@@ -78,7 +78,7 @@ export const de: TextBundle = {
   },
   gallery: {
     heading: "Der Raum",
-    intro: "Papierlaternen, warmes Holz und eine lange Bar. Das Licht bleibt gedämpft.",
+    intro: "Sanftes Laternenlicht, warme Holztöne und eine einladende Bar schaffen eine Atmosphäre zum Ankommen und Verweilen. Gedämpftes Licht, liebevolle Details und ein Hauch fernöstlicher Eleganz machen TINMO zu einem besonderen Ort mitten in Wien.",
   },
   visit: {
     heading: "Besuchen Sie uns",
@@ -129,7 +129,7 @@ export const de: TextBundle = {
     sushi1: "Dragon Roll mit flambiertem Lachs und Spicy Mayo sowie Pistachio Roll mit Avocado und Pistazien auf dunklen Platten.",
     sushi2: "Beide Sushi-Platten von oben, mit Sojasauce und einer Teekanne mit Koi.",
     sushi3: "Sushi auf einem Holztisch vor der Wand mit Blütenbäumen, dahinter blaue Samtstühle.",
-    heroVideo: "Ein Koch schwenkt Essen im Wok über einer lodernden Gasflamme in einer geschäftigen Küche.",
+    heroVideo: "Ein Koch flämmt ein Nigiri mit dem Brenner, die Flamme züngelt über dem Sushi auf einer Schieferplatte.",
   },
   legal: {
     imprint: {

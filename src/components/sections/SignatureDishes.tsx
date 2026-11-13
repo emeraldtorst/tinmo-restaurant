@@ -19,7 +19,7 @@ export default function SignatureDishes({ heading, intro, feature, items }: Food
         <h2 id="menu-title" className="text-display-lg">
           {heading}
         </h2>
-        <p className="mt-5 max-w-[34rem] font-display text-lead text-bone/80">{intro}</p>
+        <p className="mt-5 max-w-[44rem] font-display text-[1.0625rem] leading-snug md:text-lead text-bone/80">{intro}</p>
 
         <div className="mt-10 grid grid-cols-1 gap-3 md:mt-16 md:grid-cols-3 md:gap-5">
           <MediaImage

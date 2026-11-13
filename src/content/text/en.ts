@@ -64,7 +64,7 @@ export const en = {
   },
   dishes: {
     heading: "From the kitchen",
-    intro: "Sushi and maki, dim sum, udon, Thai curry, and pâtisserie to finish.",
+    intro: "From artfully prepared sushi and fine maki to handmade dim sum, aromatic udon and spicy Thai curries. Freshly prepared, full of flavour and made with care for detail. A fine selection of pâtisserie awaits you for a sweet finish.",
     featureCaption: "Dragon Roll and Pistachio Roll",
     captions: ["Korean Chicken","Salmon Teriyaki","Pumpkin croquettes on stir-fried udon","Cashew Chicken","Tropical Cheesecake","Matcha Terramisu"],
   },
@@ -80,7 +80,7 @@ export const en = {
   },
   gallery: {
     heading: "The room",
-    intro: "Paper lanterns, warm timber and a long bar. The light stays low.",
+    intro: "Soft lantern light, warm timber tones and an inviting bar create an atmosphere for arriving and lingering. Low light, lovingly chosen details and a touch of Far Eastern elegance make TINMO a special place in the heart of Vienna.",
   },
   visit: {
     heading: "Visit us",
@@ -131,7 +131,7 @@ export const en = {
     sushi1: "Dragon Roll with seared salmon and spicy mayo, and Pistachio Roll with avocado and pistachios, on dark plates.",
     sushi2: "Both sushi plates from above, with a soy sauce dish and a koi teapot.",
     sushi3: "Sushi on a wooden table in front of the blossom mural, blue velvet chairs behind.",
-    heroVideo: "A cook tosses food in a wok over a roaring gas flame in a busy kitchen.",
+    heroVideo: "A chef sears a piece of nigiri with a torch, the flame licking the sushi on a slate plate.",
   } as Record<string, string>,
   legal: {
     imprint: {

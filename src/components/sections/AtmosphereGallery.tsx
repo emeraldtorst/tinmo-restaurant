@@ -19,7 +19,7 @@ export default function AtmosphereGallery({ heading, intro, wide, photos }: Room
         <h2 id="room-title" className="text-display-lg">
           {heading}
         </h2>
-        <p className="mt-5 max-w-[34rem] font-display text-lead text-muted-strong">{intro}</p>
+        <p className="mt-5 max-w-[44rem] font-display text-[1.0625rem] leading-snug md:text-lead text-muted-strong">{intro}</p>
       </Container>
 
       <div className="mt-10 md:mt-16">

@@ -36,7 +36,7 @@ export type MediaKey = keyof typeof media;
 /** Looping hero background video (public/media/hero). The room photo underneath is the poster / fallback. */
 export const heroVideo = {
   variants: {
-    landscape: [{ src: "/media/hero/tinmo-hero-1080.mp4", type: "video/mp4" }],
-    portrait: [{ src: "/media/hero/tinmo-hero-portrait.mp4", type: "video/mp4" }],
+    landscape: [{ src: "/media/hero/torch-landscape.mp4", type: "video/mp4" }],
+    portrait: [{ src: "/media/hero/torch-portrait.mp4", type: "video/mp4" }],
   },
 } satisfies Omit<HeroVideoMedia, "videoLabel">;
