@@ -79,7 +79,7 @@ export const en = {
     tabs: "Menus",
   },
   gallery: {
-    heading: "The room",
+    heading: "The Tinmo Restaurant",
     intro: "Soft lantern light, warm timber tones and an inviting bar create an atmosphere for arriving and lingering. Low light, lovingly chosen details and a touch of Far Eastern elegance make TINMO a special place in the heart of Vienna.",
   },
   visit: {
@@ -206,7 +206,7 @@ export const en = {
         {
           heading: "8. Your rights",
           paragraphs: [
-            "You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Write to {email} to exercise them. You can also complain to the Austrian Data Protection Authority (Barichgasse 40–42, 1030 Vienna, www.dsb.gv.at).",
+            "You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Write to {email} to exercise them. You can also lodge a complaint with the Austrian Data Protection Authority.",
           ],
         },
       ],

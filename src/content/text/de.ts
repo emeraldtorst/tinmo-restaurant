@@ -77,7 +77,7 @@ export const de: TextBundle = {
     tabs: "Speisekarten",
   },
   gallery: {
-    heading: "Der Raum",
+    heading: "The Tinmo Restaurant",
     intro: "Sanftes Laternenlicht, warme Holztöne und eine einladende Bar schaffen eine Atmosphäre zum Ankommen und Verweilen. Gedämpftes Licht, liebevolle Details und ein Hauch fernöstlicher Eleganz machen TINMO zu einem besonderen Ort mitten in Wien.",
   },
   visit: {
@@ -204,7 +204,7 @@ export const de: TextBundle = {
         {
           heading: "8. Ihre Rechte",
           paragraphs: [
-            "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Wenden Sie sich dazu an {email}. Sie können sich außerdem bei der Österreichischen Datenschutzbehörde beschweren (Barichgasse 40–42, 1030 Wien, www.dsb.gv.at).",
+            "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Wenden Sie sich dazu an {email}. Sie können sich außerdem bei der Österreichischen Datenschutzbehörde beschweren.",
           ],
         },
       ],
