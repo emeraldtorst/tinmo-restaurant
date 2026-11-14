@@ -3,7 +3,8 @@ import type { HeroVideoMedia, ImageAsset } from "@/types/content";
 /**
  * TINMO's own photographs (public/media/photos). Alt text lives in text/en.ts + de.ts (`alt`, same keys).
  * To swap a picture: optimise it with `node scripts/optimize-image.mjs <input> public/media/photos/<name> --grade none`
- * and update the file here. `objectPosition` is the focal point used when the photo is cropped.
+ * and update the file here. Use a new <name> for a replacement: optimised copies are cached for 31 days, so the same
+ * name keeps showing the old photo. `objectPosition` is the focal point used when the photo is cropped.
  */
 const photo = (name: string, color: string, objectPosition = "50% 50%", width = 3024, height = 2016): ImageAsset => ({
   src: `/media/photos/${name}.webp`,

@@ -54,7 +54,7 @@ export default function Navbar({ links, homeHref }: NavbarProps) {
         data-tone={dark || open ? "dark" : "light"}
       >
         <div className="mx-auto flex h-[4.5rem] w-full max-w-content items-center justify-between px-gutter">
-          <Link href={homeHref} aria-label={ui.homeAria} className="block">
+          <Link href={homeHref} prefetch={false} aria-label={ui.homeAria} className="block">
             <Image
               src={dark || open ? "/brand/tinmo-mark-cream.png" : "/brand/tinmo-mark-olive.png"}
               alt=""
@@ -67,7 +67,7 @@ export default function Navbar({ links, homeHref }: NavbarProps) {
 
           <nav aria-label={ui.navPrimary} className="hidden items-center gap-10 lg:flex">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="tm-link tm-tap tm-label">
+              <Link key={link.href} href={link.href} prefetch={false} className="tm-link tm-tap tm-label">
                 {link.label}
               </Link>
             ))}

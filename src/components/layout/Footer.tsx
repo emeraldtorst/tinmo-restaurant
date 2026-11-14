@@ -44,7 +44,7 @@ export default function Footer({ locale }: { locale: Locale }) {
               ))}
             </p>
             <p className="mt-3 text-bone/75">
-              <Link href={localePath(locale, "/#visit")} className="tm-link tm-tap">
+              <Link href={localePath(locale, "/#visit")} prefetch={false} className="tm-link tm-tap">
                 {hoursBase.confirmed ? t.openingHours : text.visit.hoursLabel}
               </Link>
               {hoursBase.confirmed ? null : <span className="block text-bone/60">{t.placeholderTimes}</span>}
@@ -59,7 +59,7 @@ export default function Footer({ locale }: { locale: Locale }) {
             <ul className="m-0 mt-4 list-none p-0">
               {getFooterNav(locale).map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="tm-link tm-tap font-display text-[1.125rem] font-light leading-snug md:text-display-sm">
+                  <Link href={link.href} prefetch={false} className="tm-link tm-tap font-display text-[1.125rem] font-light leading-snug md:text-display-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -91,12 +91,12 @@ export default function Footer({ locale }: { locale: Locale }) {
           </p>
           <ul className="m-0 flex list-none flex-wrap gap-x-6 gap-y-1 p-0">
             <li>
-              <Link href={localePath(locale, "/impressum")} className="tm-link tm-tap">
+              <Link href={localePath(locale, "/impressum")} prefetch={false} className="tm-link tm-tap">
                 {text.nav.imprint}
               </Link>
             </li>
             <li>
-              <Link href={localePath(locale, "/datenschutz")} className="tm-link tm-tap">
+              <Link href={localePath(locale, "/datenschutz")} prefetch={false} className="tm-link tm-tap">
                 {text.nav.privacy}
               </Link>
             </li>

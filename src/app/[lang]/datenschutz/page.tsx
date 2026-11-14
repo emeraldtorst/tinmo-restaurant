@@ -57,7 +57,7 @@ export default async function PrivacyPage({ params }: Props) {
         </div>
 
         <p className="mt-12 border-t border-line pt-8">
-          <Link href={localePath(lang, "/")} className="tm-link tm-label" data-underline>
+          <Link href={localePath(lang, "/")} prefetch={false} className="tm-link tm-label" data-underline>
             ← {text.ui.backHome}
           </Link>
         </p>

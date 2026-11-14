@@ -25,6 +25,8 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, API routes and any file with an extension (icons, media, robots.txt, sitemap.xml).
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  // Only paths without a language prefix need this function. /de/… and /en/… are static pages that the CDN can serve
+  // on its own, so skipping them saves a function run on every page view. Also skipped: Next internals, API routes and
+  // any file with an extension (icons, media, robots.txt, sitemap.xml).
+  matcher: ["/((?!(?:de|en)(?:/|$)|_next|api|.*\\..*).*)"],
 };

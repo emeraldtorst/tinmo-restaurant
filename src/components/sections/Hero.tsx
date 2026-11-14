@@ -28,7 +28,7 @@ export default function Hero({ heading, line, menuLabel, image, video }: HeroPro
       className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink text-bone"
     >
       <div className="absolute inset-0">
-        <MediaImage asset={image} sizes="100vw" ratio="fill" priority hover={false} reveal={false} quality={100} />
+        <MediaImage asset={image} sizes="100vw" ratio="fill" priority hover={false} reveal={false} />
         <HeroVideo media={video} />
         <div className="scrim-bottom absolute inset-0" />
         <div className="scrim-top absolute inset-0" />

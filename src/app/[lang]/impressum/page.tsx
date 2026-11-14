@@ -66,7 +66,7 @@ export default async function ImprintPage({ params }: Props) {
         </dl>
 
         <p className="mt-12">
-          <Link href={localePath(lang, "/")} className="tm-link tm-label" data-underline>
+          <Link href={localePath(lang, "/")} prefetch={false} className="tm-link tm-label" data-underline>
             ← {text.ui.backHome}
           </Link>
         </p>

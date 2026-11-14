@@ -74,7 +74,7 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           <ul className="m-0 list-none p-0">
             {links.map((link, i) => (
               <li key={link.href} className="tm-mobile-menu__item border-b border-line-dark" style={{ ["--i" as string]: i }}>
-                <Link href={link.href} onClick={onClose} className="block py-5 font-display text-display-sm font-light">
+                <Link href={link.href} prefetch={false} onClick={onClose} className="block py-5 font-display text-display-sm font-light">
                   {link.label}
                 </Link>
               </li>

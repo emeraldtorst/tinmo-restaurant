@@ -39,8 +39,8 @@ Set `reservation.url` in `src/content/site.ts` to the booking page (OpenTable, R
 1. Put the original photo anywhere outside the project, then run
    `node scripts/optimize-image.mjs <input> public/media/<folder>/<name> --width 2000 --ratio 4:5 --quality 78`
    It writes a WebP and prints `src`, `width`, `height`, `blurDataURL` and `color`.
-2. Paste those values into the matching entry in `src/content/media.ts` and update the alt text in `text/de.ts` and `text/en.ts`.
-3. Hero video: replace the files in `public/media/hero/` (MP4, H.264, no audio, ≤ 3.5 MB; a 540p/720p version for phones; a poster frame as `poster.webp`). Keep the paths, or edit `hero` in `media.ts`.
+2. Paste those values into the matching entry in `src/content/media.ts` and update the alt text in `text/de.ts` and `text/en.ts`. **Give a replacement photo a new file name** (e.g. `interior4-v2`): optimised copies are cached for 31 days (`minimumCacheTTL` in `next.config.ts`), so the same name would keep showing the old picture.
+3. Hero video: replace the files in `public/media/hero/` (MP4, H.264, no audio, ≤ 3.5 MB; a 540p/720p version for phones; a poster frame as `poster.webp`). Keep the paths, or edit `hero` in `media.ts`. Browsers keep the video for up to a week, so returning visitors may see the old one that long.
 4. Update `public/media/CREDITS.md`.
 
 The photos and video currently in the project are temporary stock media (Pexels / Unsplash / Mixkit — free licences, see `public/media/CREDITS.md`). They show other places and dishes; replace them with the restaurant's own photography before launch.
@@ -48,9 +48,17 @@ The photos and video currently in the project are temporary stock media (Pexels 
 ### Guest reviews
 The notes shown are illustrative and say so. To go live with real reviews, set the Google listing URL and replace the notes — or fetch them from an authorised source in `src/lib/reviews.ts`. Never invent ratings or reviewer names.
 
+## Keeping Vercel usage low
+The site is small, but these settings keep it cheap as traffic grows (all in `next.config.ts`, `src/proxy.ts` and the components):
+- Photos are optimised at quality 85 (not 100) and never wider than 2560px. Looks the same, a third to a quarter of the bytes.
+- Optimised photos are cached for 31 days; the hero videos for 7 days and the menus for 1 hour in the browser.
+- `src/proxy.ts` only runs for paths without a language prefix (`/`, `/menu`, …). `/de/…` and `/en/…` are served by the CDN alone.
+- `<Link>`s have `prefetch={false}`: the site is one long page, so prefetching only added requests.
+- The hero video (about 2 MB) is the heaviest single item. It is already tightly encoded; a smaller file would visibly lose quality.
+
 ## Privacy and legal (Austria)
 - No cookies, no analytics, fonts and media served from the site itself.
-- The Google map loads only after the visitor clicks "Karte laden" / "Load map"; nothing is sent to Google before that.
+- The Google map is a lazy iframe: it loads when the visitor scrolls near it, and the privacy policy (section 5) says so.
 - `/impressum` and `/datenschutz` exist as **drafts**: add the operator's details in `site.legal` and have both texts reviewed by a lawyer or the Wirtschaftskammer before launch. If you add analytics, a booking widget or a newsletter, update the privacy policy and add a consent step.
 
 ## Before launch — details the owner must supply

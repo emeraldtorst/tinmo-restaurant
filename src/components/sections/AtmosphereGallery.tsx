@@ -27,7 +27,6 @@ export default function AtmosphereGallery({ heading, intro, wide, photos }: Room
           asset={wide}
           ratio="css"
           sizes="100vw"
-          quality={100}
           className="aspect-[4/3] md:aspect-[21/9]"
         />
       </div>

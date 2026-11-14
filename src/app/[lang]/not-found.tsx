@@ -13,10 +13,10 @@ export default function NotFound() {
           <em>Page not found.</em>
         </h1>
         <p className="mt-10 flex flex-wrap gap-x-8 gap-y-2">
-          <Link href="/de" className="tm-link tm-label" data-underline>
+          <Link href="/de" prefetch={false} className="tm-link tm-label" data-underline>
             Zur Startseite
           </Link>
-          <Link href="/en" className="tm-link tm-label" data-underline>
+          <Link href="/en" prefetch={false} className="tm-link tm-label" data-underline>
             Back to the homepage
           </Link>
         </p>
