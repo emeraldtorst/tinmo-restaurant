@@ -70,7 +70,8 @@ export const en = {
   },
   menus: {
     title: "Menu",
-    lunch: { name: "Lunch", note: "Wed and Fri, 11–17. Starter and fruit included" },
+    lunchA: { name: "Lunch Menu A", note: "Tue and Thu, 11–17. Starter and fruit included" },
+    lunchB: { name: "Lunch Menu B", note: "Wed and Fri, 11–17. Starter and fruit included" },
     food: { name: "Menu", note: "Sushi, dim sum, udon, curry, sake and drinks" },
     patisserie: { name: "Pâtisserie", note: "Matcha terramisu, pistachio, Kumo and more" },
     view: "View",

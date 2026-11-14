@@ -68,7 +68,8 @@ export const de: TextBundle = {
   },
   menus: {
     title: "Speisekarte",
-    lunch: { name: "Lunch", note: "Mi und Fr, 11–17 Uhr. Mit Vorspeise und Obst" },
+    lunchA: { name: "Lunch Menü A", note: "Di und Do, 11–17 Uhr. Mit Vorspeise und Obst" },
+    lunchB: { name: "Lunch Menü B", note: "Mi und Fr, 11–17 Uhr. Mit Vorspeise und Obst" },
     food: { name: "Speisekarte", note: "Sushi, Dim Sum, Udon, Curry, Sake und Getränke" },
     patisserie: { name: "Pâtisserie", note: "Matcha-Terramisu, Pistazie, Kumo und mehr" },
     view: "Ansehen",

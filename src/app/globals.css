@@ -58,6 +58,7 @@
   --container-content: 96rem;
   --container-narrow: 64rem;
   --container-measure: 34rem;
+  --breakpoint-wide: 87.5rem; /* 1400px: the four menu cards sit in one row from here */
   --breakpoint-3xl: 120rem;
 
   /* Motion */

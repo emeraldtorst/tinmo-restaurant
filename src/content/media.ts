@@ -24,7 +24,9 @@ export const media = {
   interior1: photo("interior1", "#824e24"),
   interior2: photo("interior2", "#75472b", "50% 22%"),
   interior3: photo("interior3", "#743f18"),
-  interior4: photo("interior4", "#532c10", "46% 35%"),
+  // Cut at the right edge (2600 of 3024 px) to leave out a step ladder and boxes beside the bar. 66% keeps the portrait crop
+  // on wide screens where it was. New file name on purpose: the image optimiser and browsers cache by URL.
+  interior4: photo("interior4-cropped", "#6b3513", "66% 35%", 2600, 2016),
   interior5: photo("interior5", "#663010"),
   sushi1: photo("sushi1", "#a08454", "45% 55%", 1600, 1200),
   sushi2: photo("sushi2", "#a08755", "50% 50%", 1200, 1600),

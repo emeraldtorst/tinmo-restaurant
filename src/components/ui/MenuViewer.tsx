@@ -154,12 +154,12 @@ export function MenuButton({ id, variant = "outline", tone = "light", size = "md
   );
 }
 
-/** The three menus as large cards; each opens the pop-out on that menu. */
+/** The menus as large cards (two lunch menus, Speisekarte, pâtisserie); each opens the pop-out on that menu. */
 export function MenuCards({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const { open } = useMenuViewer();
   const { menus } = useLocaleText();
   return (
-    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3 md:gap-5">
+    <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2 md:gap-5 wide:grid-cols-4">
       {menuFiles.map((m) => (
         <li key={m.id}>
           <button
