@@ -11,7 +11,7 @@ interface RoomProps {
   photos: ImageAsset[];
 }
 
-/** The room: a wide cinematic frame, then four portraits with identical framing and spacing. */
+/** The room: one whole photograph, then four portraits with identical framing and spacing. */
 export default function AtmosphereGallery({ heading, intro, wide, photos }: RoomProps) {
   return (
     <section id="room" aria-labelledby="room-title" className="bg-paper py-section">
@@ -22,13 +22,9 @@ export default function AtmosphereGallery({ heading, intro, wide, photos }: Room
         <p className="mt-5 max-w-[44rem] font-display text-[1.0625rem] leading-snug md:text-lead text-muted-strong">{intro}</p>
       </Container>
 
-      <div className="mt-10 md:mt-16">
-        <MediaImage
-          asset={wide}
-          ratio="css"
-          sizes="100vw"
-          className="aspect-[4/3] md:aspect-[21/9]"
-        />
+      {/* The whole photograph, uncropped (its own 4:3 shape); on wide screens centred and capped so it stays on screen. */}
+      <div className="mt-10 md:mx-auto md:mt-16 md:max-w-[72rem] md:px-gutter">
+        <MediaImage asset={wide} sizes="(min-width: 1200px) 72rem, 100vw" />
       </div>
 
       <Container>
