@@ -24,7 +24,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         image={m.roomGrey}
         video={{ videoLabel: text.alt.heroVideo, variants: heroVideo.variants }}
       />
-      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.roomBlue} photos={[m.roomPapers, m.roomFans, m.roomDucts, m.sushi3]} />
+      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} rows={[[m.roomBlue, m.roomPapers], [m.roomFans, m.roomDucts, m.sushi3]]} />
       <SignatureDishes
         heading={text.dishes.heading}
         intro={text.dishes.intro}

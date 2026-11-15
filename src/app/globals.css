@@ -728,3 +728,47 @@
 }
 
 
+
+/* Large photo view (lightbox) */
+@layer components {
+  .tm-dialog--photo {
+    width: 100vw;
+    max-width: none;
+    height: 100svh;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    background: var(--color-ink);
+    color: var(--color-bone);
+  }
+  .tm-dialog--photo::backdrop {
+    background: transparent;
+  }
+  .tm-lightbox__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--color-bone) 45%, transparent);
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-ink) 55%, transparent);
+    color: var(--color-bone);
+    cursor: pointer;
+    transition: background-color var(--dur-fast), color var(--dur-fast);
+  }
+  @media (hover: hover) {
+    .tm-lightbox__arrow:hover {
+      background: var(--color-bone);
+      color: var(--color-ink);
+    }
+  }
+}
+
+
+

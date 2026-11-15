@@ -34,6 +34,10 @@ export const de: TextBundle = {
     closed: "Geschlossen",
     backHome: "Zurück zur Startseite",
     backToTop: "Nach oben",
+    photoOpen: "Foto vergrößern",
+    photoPrev: "Vorheriges Foto",
+    photoNext: "Nächstes Foto",
+    photoClose: "Schließen",
   },
   nav: {
     menu: "Speisekarte",

@@ -1,18 +1,22 @@
 import Container from "@/components/ui/Container";
-import MediaImage from "@/components/ui/MediaImage";
+import { Photo, type LightboxItem } from "@/components/ui/Lightbox";
 import type { ImageAsset } from "@/types/content";
 
 interface RoomProps {
   heading: string;
   intro: string;
-  /** One panoramic photograph, shown wide. */
-  wide: ImageAsset;
-  /** Four photographs in a row beneath it. */
-  photos: ImageAsset[];
+  /** Photographs in rows; every photo is shown whole, and the photos in a row share one height. */
+  rows: ImageAsset[][];
 }
 
-/** The room: one whole photograph, then four portraits with identical framing and spacing. */
-export default function AtmosphereGallery({ heading, intro, wide, photos }: RoomProps) {
+/**
+ * The room: rows where each photograph keeps its own shape (nothing is cropped) and the row shares one height, because
+ * each photo's width follows its proportions. On a phone the photos simply stack. A tap opens a photo large.
+ */
+export default function AtmosphereGallery({ heading, intro, rows }: RoomProps) {
+  const group: LightboxItem[] = rows.flat().map((image) => ({ image }));
+  const indexed = rows.map((row) => row.map((image) => ({ image, index: group.findIndex((g) => g.image.src === image.src) })));
+
   return (
     <section id="room" aria-labelledby="room-title" className="bg-paper py-section">
       <Container>
@@ -20,23 +24,20 @@ export default function AtmosphereGallery({ heading, intro, wide, photos }: Room
           {heading}
         </h2>
         <p className="mt-5 max-w-[44rem] font-display text-[1.0625rem] leading-snug md:text-lead text-muted-strong">{intro}</p>
-      </Container>
 
-      {/* The whole photograph, uncropped (its own 4:3 shape); on wide screens centred and capped so it stays on screen. */}
-      <div className="mt-10 md:mx-auto md:mt-16 md:max-w-[72rem] md:px-gutter">
-        <MediaImage asset={wide} sizes="(min-width: 1200px) 72rem, 100vw" />
-      </div>
-
-      <Container>
-        <div className="mt-3 grid grid-cols-1 gap-3 md:mt-5 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
-          {photos.map((image) => (
-            <MediaImage
-              key={image.src}
-              asset={image}
-              ratio="css"
-              sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-              className="aspect-[4/3] md:aspect-[4/5]"
-            />
+        <div className="mt-10 flex flex-col gap-3 md:mt-16 md:gap-4">
+          {indexed.map((row, r) => (
+            <div key={r} className="flex flex-col gap-3 md:flex-row md:gap-4">
+              {row.map(({ image, index }) => (
+                <div
+                  key={image.src}
+                  className="min-w-0 md:[flex:var(--a)_1_0%]"
+                  style={{ ["--a" as string]: image.width / image.height }}
+                >
+                  <Photo group={group} index={index} sizes={`(min-width: 768px) ${Math.round(100 / row.length)}vw, 100vw`} />
+                </div>
+              ))}
+            </div>
           ))}
         </div>
       </Container>

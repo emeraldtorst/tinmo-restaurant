@@ -36,6 +36,10 @@ export const en = {
     closed: "Closed",
     backHome: "Back to the homepage",
     backToTop: "Back to top",
+    photoOpen: "Enlarge photo",
+    photoPrev: "Previous photo",
+    photoNext: "Next photo",
+    photoClose: "Close",
   },
   nav: {
     menu: "Menu",

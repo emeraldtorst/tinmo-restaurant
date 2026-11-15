@@ -12,6 +12,7 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { LocaleProvider } from "@/components/ui/LocaleProvider";
 import BackToTop from "@/components/ui/BackToTop";
+import { LightboxProvider } from "@/components/ui/Lightbox";
 import { MenuProvider } from "@/components/ui/MenuViewer";
 import { ReservationProvider } from "@/components/ui/ReservationDialog";
 import "../globals.css";
@@ -105,9 +106,11 @@ export default async function RootLayout({ children, params }: LangParams & { ch
         >
           <ReservationProvider>
             <MenuProvider>
+              <LightboxProvider>
               <Navbar links={getPrimaryNav(lang)} homeHref={localePath(lang, "/")} />
               <main id="main">{children}</main>
               <Footer locale={lang} />
+            </LightboxProvider>
             </MenuProvider>
           </ReservationProvider>
           <BackToTop />
