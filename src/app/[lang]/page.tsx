@@ -21,10 +21,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         heading={text.meta.title}
         line={text.hero.line}
         menuLabel={text.hero.menuLabel}
-        image={m.interior5}
+        image={m.roomGrey}
         video={{ videoLabel: text.alt.heroVideo, variants: heroVideo.variants }}
       />
-      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.interior2} photos={[m.interior1, m.interior3, m.interior4, m.sushi3]} />
+      <AtmosphereGallery heading={text.gallery.heading} intro={text.gallery.intro} wide={m.roomBlue} photos={[m.roomPapers, m.roomFans, m.roomDucts, m.sushi3]} />
       <SignatureDishes
         heading={text.dishes.heading}
         intro={text.dishes.intro}
@@ -32,7 +32,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         items={[m.food1, m.food2, m.food3, m.food4, m.dessert1, m.dessert2].map((image, i) => ({ image, caption: text.dishes.captions[i] }))}
       />
       <VisitSection locale={lang} />
-      <ReservationCTA heading={text.reserve.heading} line={text.reserve.line} image={m.interior5} placeholders={text.placeholders} />
+      <ReservationCTA heading={text.reserve.heading} line={text.reserve.line} image={m.roomGrey} placeholders={text.placeholders} />
     </>
   );
 }

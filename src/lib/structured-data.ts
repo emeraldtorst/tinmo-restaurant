@@ -10,7 +10,7 @@ const cuisines: Record<Locale, string[]> = {
 };
 
 /** Photographs offered to search engines (absolute URLs, only when the domain is configured). */
-const photos = ["interior5", "interior2", "sushi1", "food1", "dessert1"];
+const photos = ["room-blue", "room-papers", "sushi1", "food1", "dessert1"];
 
 /**
  * Restaurant JSON-LD (schema.org) containing ONLY verified information, read by Google and by AI search engines.
