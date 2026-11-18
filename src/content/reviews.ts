@@ -40,6 +40,8 @@ export interface PressItem {
   /** The article's own headline. */
   title: string;
   url: string;
+  /** The outlet's own logo (public/press), drawn in one colour. `ratio` = width / height. */
+  logo: { src: string; ratio: number; height: string };
 }
 
 export const press: PressItem[] = [
@@ -48,11 +50,13 @@ export const press: PressItem[] = [
     date: "2026-11-17",
     title: "Tinmo bringt Sushi, Dim Sum und asiatische Klassiker in die Wiener Innenstadt",
     url: "https://www.falstaff.com/at/news/tinmo-bringt-sushi-dim-sum-und-asiatische-klassiker-in-die-wiener-innenstadt",
+    logo: { src: "/press/falstaff.svg", ratio: 239 / 71, height: "2.75rem" },
   },
   {
     outlet: "gastro.news",
     date: "2026-11-16",
     title: "Ein asiatisches Herzensprojekt",
     url: "https://gastro.news/ein-asiatisches-herzensprojekt/",
+    logo: { src: "/press/gastro-news.svg", ratio: 142 / 26, height: "1.75rem" },
   },
 ];

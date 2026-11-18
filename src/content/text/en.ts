@@ -114,7 +114,7 @@ export const en = {
   guests: {
     eyebrow: "Guests & press",
     heading: "Kind words",
-    ratingLine: "on Google · 12 reviews",
+    ratingLine: "12 reviews",
     original: "Reviews in their original German.",
     allReviews: "All reviews on Google Maps",
     pressHeading: "In the press",

@@ -1,3 +1,4 @@
+import Ornament from "@/components/ui/Ornament";
 import Container from "@/components/ui/Container";
 import { Photo, type LightboxItem } from "@/components/ui/Lightbox";
 import { MenuCards } from "@/components/ui/MenuViewer";
@@ -25,6 +26,7 @@ export default function SignatureDishes({ heading, intro, feature, items }: Food
   return (
     <section id="menu" aria-labelledby="menu-title" data-tone="dark" className="bg-ink py-section text-bone">
       <Container>
+        <Ornament />
         <h2 id="menu-title" className="text-display-lg">
           {heading}
         </h2>

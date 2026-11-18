@@ -783,3 +783,44 @@
   }
 }
 
+
+/* Finer details: gold ornament, double-framed cards, calmer buttons */
+@layer components {
+  .tm-ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.75rem;
+    color: var(--color-gold);
+  }
+  .tm-ornament::before {
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .tm-ornament::after {
+    content: "";
+    width: 3.5rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.8;
+  }
+
+  /* A second hairline set inside the card, like a printed invitation. */
+  .tm-frame {
+    position: relative;
+  }
+  .tm-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+    pointer-events: none;
+  }
+
+  .tm-btn {
+    letter-spacing: 0.05em;
+  }
+}

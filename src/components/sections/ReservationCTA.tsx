@@ -1,3 +1,4 @@
+import Ornament from "@/components/ui/Ornament";
 import Container from "@/components/ui/Container";
 import MediaImage from "@/components/ui/MediaImage";
 import ReserveButton from "@/components/ui/ReserveButton";
@@ -27,6 +28,7 @@ export default function ReservationCTA({ heading, line, image, placeholders }: R
         <div className="scrim-bottom absolute inset-0" />
       </div>
       <Container className="relative pb-14 pt-32 md:pb-20">
+        <Ornament />
         <h2 id="reserve-title" className="text-display-lg">
           {heading}
         </h2>

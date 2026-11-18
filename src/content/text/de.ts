@@ -112,7 +112,7 @@ export const de: TextBundle = {
   guests: {
     eyebrow: "Gäste & Presse",
     heading: "Freundliche Worte",
-    ratingLine: "auf Google · 12 Bewertungen",
+    ratingLine: "12 Bewertungen",
     original: "",
     allReviews: "Alle Bewertungen auf Google Maps",
     pressHeading: "In der Presse",

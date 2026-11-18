@@ -1,3 +1,4 @@
+import Ornament from "@/components/ui/Ornament";
 import Container from "@/components/ui/Container";
 import { Photo, type LightboxItem } from "@/components/ui/Lightbox";
 import type { ImageAsset } from "@/types/content";
@@ -20,6 +21,7 @@ export default function AtmosphereGallery({ heading, intro, rows }: RoomProps) {
   return (
     <section id="room" aria-labelledby="room-title" className="bg-paper py-section">
       <Container>
+        <Ornament />
         <h2 id="room-title" className="text-display-lg">
           {heading}
         </h2>

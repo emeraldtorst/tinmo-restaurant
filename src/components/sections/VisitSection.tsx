@@ -1,3 +1,4 @@
+import Ornament from "@/components/ui/Ornament";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import ReserveButton from "@/components/ui/ReserveButton";
@@ -35,6 +36,7 @@ export default function VisitSection({ locale }: { locale: Locale }) {
       <Container>
         <div className="tm-grid">
           <div className="col-span-6 md:col-span-5">
+                <Ornament />
                 <h2 id="visit-title" className="text-display-md">
               {t.heading}
             </h2>
