@@ -109,6 +109,20 @@ export const de: TextBundle = {
       openInMaps: "In Google Maps öffnen",
     },
   },
+  guests: {
+    eyebrow: "Gäste & Presse",
+    heading: "Freundliche Worte",
+    ratingLine: "auf Google · 12 Bewertungen",
+    original: "",
+    allReviews: "Alle Bewertungen auf Google Maps",
+    pressHeading: "In der Presse",
+    readArticle: "Artikel lesen",
+    stars: "5 von 5 Sternen",
+    summaries: [
+      "Ein neues Restaurant in der Innenstadt, geführt von Familie Chen: Sushi, Dim Sum, Udon und Thai-Currys in warmer Atmosphäre.",
+      "Das Ehepaar hinter TINMO über sein Herzensprojekt, nach mehr als zwanzig Jahren in der Gastronomie."
+    ]
+  },
   reserve: {
     heading: "Ein Tisch für heute Abend",
     line: "Online reservieren – oder telefonisch und per E-Mail.",

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import AtmosphereGallery from "@/components/sections/AtmosphereGallery";
+import GuestsAndPress from "@/components/sections/GuestsAndPress";
 import Hero from "@/components/sections/Hero";
 import ReservationCTA from "@/components/sections/ReservationCTA";
 import SignatureDishes from "@/components/sections/SignatureDishes";
@@ -31,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         feature={{ wide: m.sushi1, tall: m.sushi2, caption: text.dishes.featureCaption }}
         items={[m.food1, m.food2, m.food3, m.food4, m.dessert1, m.dessert2].map((image, i) => ({ image, caption: text.dishes.captions[i] }))}
       />
+      <GuestsAndPress locale={lang} text={text.guests} />
       <VisitSection locale={lang} />
       <ReservationCTA heading={text.reserve.heading} line={text.reserve.line} image={m.roomGrey} placeholders={text.placeholders} />
     </>

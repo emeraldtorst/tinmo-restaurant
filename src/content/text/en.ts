@@ -111,6 +111,20 @@ export const en = {
       openInMaps: "Open in Google Maps",
     },
   },
+  guests: {
+    eyebrow: "Guests & press",
+    heading: "Kind words",
+    ratingLine: "on Google · 12 reviews",
+    original: "Reviews in their original German.",
+    allReviews: "All reviews on Google Maps",
+    pressHeading: "In the press",
+    readArticle: "Read the article",
+    stars: "5 out of 5 stars",
+    summaries: [
+      "A new restaurant in the city centre, run by the Chen family: sushi, dim sum, udon and Thai curries in a warm setting.",
+      "The couple behind TINMO on their personal project, after more than twenty years in hospitality."
+    ]
+  },
   reserve: {
     heading: "A table for tonight",
     line: "Reserve online, or by phone or email.",
