@@ -93,6 +93,8 @@ export interface ReservationConfig {
   provider: ReservationProvider;
   /** Booking URL. `null` = booking not connected (the placeholder dialog opens). */
   url: string | null;
+  /** Booking widget shown inside the site's reservation dialog (TheFork). Loaded only after the visitor clicks "Reserve". */
+  embedUrl: string | null;
   opensInNewTab: boolean;
 }
 

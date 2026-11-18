@@ -59,6 +59,8 @@ export const de: TextBundle = {
     call: "Anrufen",
     email: "E-Mail",
     close: "Schließen",
+    openNewTab: "In neuem Tab öffnen",
+    phoneHint: "Lieber telefonisch oder per E-Mail?",
   },
   hero: {
     line: "Wo asiatische Aromen auf die Wärme von Laternenlicht treffen. Genießen Sie frisch zubereitetes Sushi, feines Dim Sum und köstliche Udon an einem Ort, der zum Teilen, Genießen und Zusammenkommen gemacht ist. Willkommen bei TINMO, Wien.",
@@ -109,7 +111,7 @@ export const de: TextBundle = {
   },
   reserve: {
     heading: "Ein Tisch für heute Abend",
-    line: "Reservierungen telefonisch oder per E-Mail.",
+    line: "Online reservieren – oder telefonisch und per E-Mail.",
   },
   footer: {
     visit: "Besuch",
@@ -179,7 +181,7 @@ export const de: TextBundle = {
         {
           heading: "3. Keine Cookies, kein Tracking",
           paragraphs: [
-            "Diese Website setzt keine Cookies für Statistik oder Werbung und verwendet keine Analyse- oder Tracking-Dienste. Schriften, Bilder, Video und Speisekarten (PDF) werden von unserem eigenen Server geladen. Einzige Ausnahme ist die Google-Karte (siehe Abschnitt 5).",
+            "Diese Website setzt keine Cookies für Statistik oder Werbung und verwendet keine Analyse- oder Tracking-Dienste. Schriften, Bilder, Video und Speisekarten (PDF) werden von unserem eigenen Server geladen. Ausnahmen sind die Google-Karte (siehe Abschnitt 5) und das Reservierungssystem von TheFork, das erst nach Klick auf „Reservieren“ geladen wird (siehe Abschnitt 6).",
           ],
         },
         {
@@ -197,7 +199,8 @@ export const de: TextBundle = {
         {
           heading: "6. Kontaktaufnahme und Reservierung",
           paragraphs: [
-            "Wenn Sie uns per E-Mail oder Telefon kontaktieren oder einen Tisch reservieren, verarbeiten wir Ihre Angaben (zum Beispiel Name, Telefonnummer, Anzahl der Gäste, Datum und Uhrzeit), um Ihre Anfrage zu beantworten und die Reservierung zu organisieren (Art. 6 Abs. 1 lit. b oder f DSGVO). Wir löschen die Daten, sobald sie nicht mehr benötigt werden, und geben sie nicht an Dritte weiter.",
+            "Wenn Sie uns per E-Mail oder Telefon kontaktieren oder einen Tisch reservieren, verarbeiten wir Ihre Angaben (zum Beispiel Name, Telefonnummer, Anzahl der Gäste, Datum und Uhrzeit), um Ihre Anfrage zu beantworten und die Reservierung zu organisieren (Art. 6 Abs. 1 lit. b oder f DSGVO). Wir löschen die Daten, sobald sie nicht mehr benötigt werden, und geben sie – außer bei Online-Reservierungen, siehe unten – nicht an Dritte weiter.",
+            "Online-Reservierung über TheFork: Beim Klick auf „Reservieren“ öffnet sich das Buchungssystem von TheFork (TheFork SAS, Frankreich). Erst dann verbindet sich Ihr Browser mit TheFork, Ihre IP-Adresse wird übermittelt, und TheFork kann Cookies setzen. Ihre Buchungsdaten (zum Beispiel Name, Kontaktdaten, Datum, Uhrzeit, Personenzahl) verarbeitet TheFork und leitet sie an uns weiter, damit wir Ihre Reservierung bestätigen können (Art. 6 Abs. 1 lit. b DSGVO). Es gelten zusätzlich die Datenschutzhinweise von TheFork: https://www.thefork.at/datenschutz. Sie können ebenso gut telefonisch oder per E-Mail reservieren.",
           ],
         },
         {

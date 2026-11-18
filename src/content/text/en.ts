@@ -61,6 +61,8 @@ export const en = {
     call: "Call",
     email: "Email",
     close: "Close",
+    openNewTab: "Open in a new tab",
+    phoneHint: "Prefer phone or email?",
   },
   hero: {
     line: "Where Asian flavours meet the warmth of lantern light. Enjoy freshly made sushi, delicate dim sum and delicious udon in a place made for sharing, savouring and coming together. Welcome to TINMO, Vienna.",
@@ -111,7 +113,7 @@ export const en = {
   },
   reserve: {
     heading: "A table for tonight",
-    line: "Reservations by phone or email.",
+    line: "Reserve online, or by phone or email.",
   },
   footer: {
     visit: "Visit",
@@ -181,7 +183,7 @@ export const en = {
         {
           heading: "3. No cookies, no tracking",
           paragraphs: [
-            "This website does not set cookies for analytics or advertising and uses no tracking or analytics services. Fonts, images, video and the menus (PDF) are served from our own server. The one exception is the Google Map (see section 5).",
+            "This website does not set cookies for analytics or advertising and uses no tracking or analytics services. Fonts, images, video and the menus (PDF) are served from our own server. The exceptions are the Google Map (see section 5) and the TheFork booking system, which only loads after you click “Reserve” (see section 6).",
           ],
         },
         {
@@ -199,7 +201,8 @@ export const en = {
         {
           heading: "6. Getting in touch and reservations",
           paragraphs: [
-            "If you contact us by email or phone or reserve a table, we process the details you give us (for example name, phone number, number of guests, date and time) to answer your enquiry and organise your reservation (Art. 6(1)(b) or (f) GDPR). We delete them once they are no longer needed and do not pass them on to third parties.",
+            "If you contact us by email or phone or reserve a table, we process the details you give us (for example name, phone number, number of guests, date and time) to answer your enquiry and organise your reservation (Art. 6(1)(b) or (f) GDPR). We delete them once they are no longer needed and do not pass them on to third parties, except for online bookings as described below.",
+            "Online booking via TheFork: when you click “Reserve”, the TheFork booking system (TheFork SAS, France) opens. Only then does your browser connect to TheFork, your IP address is transmitted and TheFork may set cookies. TheFork processes your booking details (for example name, contact details, date, time, party size) and passes them to us so we can confirm your reservation (Art. 6(1)(b) GDPR). TheFork’s own privacy information also applies: https://www.thefork.com/privacy-policy. You are equally welcome to book by phone or email.",
           ],
         },
         {

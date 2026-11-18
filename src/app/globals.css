@@ -772,3 +772,14 @@
 
 
 
+
+/* Reservation pop-up with the booking widget */
+@layer components {
+  .tm-dialog--booking {
+    width: min(46rem, calc(100vw - 1rem));
+    height: min(54rem, calc(100svh - 1rem));
+    max-height: none;
+    overflow: hidden;
+  }
+}
+

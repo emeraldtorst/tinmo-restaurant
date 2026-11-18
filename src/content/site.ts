@@ -41,10 +41,11 @@ export const site: SiteConfig = {
   },
 
   reservation: {
-    // Connect a booking provider by setting `url` (and `provider` for your own reference).
-    // While `url` is null, "Reserve a Table" opens an honest placeholder dialog.
-    provider: "none",
-    url: null, // e.g. "https://www.opentable.com/r/tinmo"
+    // TheFork booking widget, shown in the reservation pop-up. `url` stays null: "Reserve" opens the pop-up, not a new page.
+    // (Set `url` instead to make the buttons plain links to a booking page.)
+    provider: "thefork",
+    url: null,
+    embedUrl: "https://widget.thefork.com/090f8c69-e6df-419f-8daa-cc73226ae1c2",
     opensInNewTab: true,
   },
 
