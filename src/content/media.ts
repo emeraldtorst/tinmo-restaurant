@@ -28,7 +28,7 @@ export const media = {
   windowWall: photo("room-window", "#9f806d", "50% 40%", 1388, 1066),
   barFlowers: photo("room-bar", "#ab7f5e", "50% 40%", 1388, 1066),
   stairs: photo("room-stairs", "#c1957b", "50% 50%", 1388, 1066),
-  corner: photo("room-corner", "#a36b48", "50% 40%", 1388, 1066),
+  corner: photo("room-corner-hd", "#a46c48", "50% 40%", 1732, 1333), // 2000 px source, cut 268 px at the left
   sushi1: photo("sushi1", "#a08454", "45% 55%", 1600, 1200),
   sushi2: photo("sushi2", "#a08755", "50% 50%", 1200, 1600),
   sushi3: photo("sushi3", "#ad9266", "50% 72%", 1200, 1600),
