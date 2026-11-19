@@ -148,11 +148,11 @@ export const en = {
     sushi2: "Both sushi plates from above, with a soy sauce dish and a koi teapot.",
     sushi3: "Sushi on a wooden table in front of the blossom mural, blue velvet chairs behind.",
     heroVideo: "A chef sears a piece of nigiri with a torch, the flame licking the sushi on a slate plate.",
-    roomBlue: "The dining room with blue velvet chairs, wooden tables and paper lanterns in front of the pine-tree mural.",
-    roomPapers: "Hanging papers with brush-painted characters and plants above the walkway, the red staircase on the left and the long bar on the right.",
-    roomFans: "Bamboo fans with coloured tassels hanging as lamps above the tables, a linen curtain behind.",
-    roomDucts: "The dining room under white ventilation ducts, with paper lanterns and the pine-tree mural.",
-    roomGrey: "Grey velvet chairs and wooden tables under paper lanterns, in front of the pine-tree mural.",
+    pines: "The dining room in front of the pine-tree mural, paper lanterns above, grey velvet chairs and wooden tables below.",
+    windowWall: "The dining room under white ventilation ducts and paper lanterns, with the pine-tree mural and a window to the street.",
+    barFlowers: "The bar with a vase of fresh flowers, wine glasses hanging above it and brush-painted papers over the walkway.",
+    stairs: "The long wooden bar with grey stools, the red staircase on the left and hanging painted papers above the walkway.",
+    corner: "A quiet corner with wooden tables and small lamps, a linen curtain and bamboo fans beside the pine-tree mural.",
   } as Record<string, string>,
   legal: {
     imprint: {

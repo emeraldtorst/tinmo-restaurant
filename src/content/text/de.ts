@@ -146,11 +146,11 @@ export const de: TextBundle = {
     sushi2: "Beide Sushi-Platten von oben, mit Sojasauce und einer Teekanne mit Koi.",
     sushi3: "Sushi auf einem Holztisch vor der Wand mit Blütenbäumen, dahinter blaue Samtstühle.",
     heroVideo: "Ein Koch flämmt ein Nigiri mit dem Brenner, die Flamme züngelt über dem Sushi auf einer Schieferplatte.",
-    roomBlue: "Der Gastraum mit blauen Samtstühlen, Holztischen und Papierlaternen vor der Wand mit Kiefernmotiv.",
-    roomPapers: "Hängende Papierbahnen mit gemalten Schriftzeichen und Pflanzen über dem Gang, links die rote Treppe, rechts die lange Bar.",
-    roomFans: "Bambusfächer mit farbigen Quasten hängen als Lampen über den Tischen, dahinter ein Leinenvorhang.",
-    roomDucts: "Der Gastraum unter weißen Lüftungsrohren, mit Papierlaternen und der Wand mit Kiefernmotiv.",
-    roomGrey: "Graue Samtstühle und Holztische unter Papierlaternen, vor der Wand mit Kiefernmotiv.",
+    pines: "Der Gastraum vor der Wand mit Kiefernmotiv, darüber Papierlaternen, darunter graue Samtstühle und Holztische.",
+    windowWall: "Der Gastraum unter weißen Lüftungsrohren und Papierlaternen, mit der Wand mit Kiefernmotiv und einem Fenster zur Straße.",
+    barFlowers: "Die Bar mit einer Vase frischer Blumen, darüber hängende Weingläser und gemalte Papierbahnen über dem Gang.",
+    stairs: "Die lange Holzbar mit grauen Hockern, links die rote Treppe und darüber hängende gemalte Papierbahnen.",
+    corner: "Eine ruhige Ecke mit Holztischen und kleinen Lampen, einem Leinenvorhang und Bambusfächern neben der Wand mit Kiefernmotiv.",
   },
   legal: {
     imprint: {
