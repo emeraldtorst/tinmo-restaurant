@@ -86,8 +86,13 @@ export const en = {
     tabs: "Menus",
   },
   gallery: {
-    heading: "The Tinmo Restaurant",
-    intro: "Soft lantern light, warm timber tones and an inviting bar create an atmosphere for arriving and lingering. Low light, lovingly chosen details and a touch of Far Eastern elegance make TINMO a special place in the heart of Vienna.",
+    heading: "Our story",
+    paragraphs: [
+      "TINMO stands for “Tiny Moment” – the small, special moments that make life beautiful. We believe it is often the simple moments that stay with us: a good meal, a shared laugh, or a lovely time with family and friends.",
+      "For us, TINMO is more than a restaurant. After more than 20 years in hospitality and twelve years in our small restaurant, we, as a couple, have fulfilled a long-cherished dream: to create a place where good food and warm hospitality come together.",
+      "In the heart of Vienna’s city centre, TINMO brings together the diversity of Asian cuisine – from freshly prepared sushi and creative signature rolls to fine dim sum, udon, aromatic Thai curries and much-loved Asian classics. Warm wood tones, soft lighting and loving details create a cosy atmosphere in which you will want to linger.",
+      "Whether for lunch, dinner with friends or special moments with the family – at TINMO we want to turn small moments into beautiful memories."
+    ],
   },
   visit: {
     heading: "Visit us",

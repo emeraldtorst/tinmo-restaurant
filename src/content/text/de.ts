@@ -84,8 +84,13 @@ export const de: TextBundle = {
     tabs: "Speisekarten",
   },
   gallery: {
-    heading: "Das Restaurant TINMO",
-    intro: "Sanftes Laternenlicht, warme Holztöne und eine einladende Bar schaffen eine Atmosphäre zum Ankommen und Verweilen. Gedämpftes Licht, liebevolle Details und ein Hauch fernöstlicher Eleganz machen TINMO zu einem besonderen Ort mitten in Wien.",
+    heading: "Unsere Story",
+    paragraphs: [
+      "TINMO steht für „Tiny Moment“ – die kleinen, besonderen Augenblicke, die das Leben schön machen. Denn wir glauben, dass es oft die einfachen Momente sind, die in Erinnerung bleiben: ein gutes Essen, ein gemeinsames Lachen oder eine schöne Zeit mit Familie und Freunden.",
+      "Für uns ist TINMO mehr als nur ein Restaurant. Nach über 20 Jahren Erfahrung in der Gastronomie und zwölf Jahren in unserem kleinen Restaurant haben wir uns als Ehepaar einen lang gehegten Traum erfüllt: einen Ort zu schaffen, an dem gutes Essen und herzliche Gastfreundschaft zusammenkommen.",
+      "Mitten in der Wiener Innenstadt vereint TINMO die Vielfalt der asiatischen Küche – von frisch zubereitetem Sushi und kreativen Signature Rolls über feine Dim Sum bis hin zu Udon, aromatischen Thai Currys und beliebten asiatischen Klassikern. Warme Holztöne, sanftes Licht und liebevolle Details schaffen eine gemütliche Atmosphäre, in der man gerne verweilt.",
+      "Ob zum Mittagessen, zum Abendessen mit Freunden oder für besondere Momente mit der Familie – bei TINMO möchten wir aus kleinen Augenblicken schöne Erinnerungen machen."
+    ],
   },
   visit: {
     heading: "Besuchen Sie uns",
