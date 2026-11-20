@@ -1,27 +1,34 @@
-import Ornament from "@/components/ui/Ornament";
 import Container from "@/components/ui/Container";
 import { Photo, type LightboxItem } from "@/components/ui/Lightbox";
 import { MenuCards } from "@/components/ui/MenuViewer";
+import Ornament from "@/components/ui/Ornament";
 import type { ImageAsset } from "@/types/content";
+
+interface DishGroup {
+  /** Small heading above the group, e.g. "Sushi". */
+  label: string;
+  /** Photographs in rows; every photo is shown whole, and the photos in a row share one height. */
+  rows: ImageAsset[][];
+}
 
 interface FoodProps {
   heading: string;
   intro: string;
-  /** The two sushi photographs shown large at the top, side by side at the same height. */
-  feature: { wide: ImageAsset; tall: ImageAsset; caption: string };
-  items: Array<{ image: ImageAsset; caption: string }>;
+  groups: DishGroup[];
 }
 
 /**
- * The food on deep moss: the sushi first (two photos that share one height), then the dishes, each photo whole in its
- * own 3:2 shape with its name beneath, then the menus. A tap on any photo opens it large, with arrows through the set.
+ * The food on deep moss, in groups (sushi, hot dishes, dim sum, pâtisserie). Inside a group the photographs sit in rows
+ * where each one keeps its own shape (nothing is cropped) and the row shares one height, because each photo's width
+ * follows its proportions. A tap on any photo opens it large, with arrows through the whole set. The menus follow.
  */
-export default function SignatureDishes({ heading, intro, feature, items }: FoodProps) {
-  const group: LightboxItem[] = [
-    { image: feature.wide, caption: feature.caption },
-    { image: feature.tall, caption: feature.caption },
-    ...items,
-  ];
+export default function SignatureDishes({ heading, intro, groups }: FoodProps) {
+  const all: LightboxItem[] = groups.flatMap((g) => g.rows.flat()).map((image) => ({ image }));
+  let next = 0;
+  const indexed = groups.map((g) => ({
+    label: g.label,
+    rows: g.rows.map((row) => row.map((image) => ({ image, index: next++ }))),
+  }));
 
   return (
     <section id="menu" aria-labelledby="menu-title" data-tone="dark" className="bg-ink py-section text-bone">
@@ -32,25 +39,25 @@ export default function SignatureDishes({ heading, intro, feature, items }: Food
         </h2>
         <p className="mt-5 max-w-[44rem] font-display text-[1.0625rem] leading-snug md:text-lead text-bone/80">{intro}</p>
 
-        <div className="mt-10 flex flex-col gap-3 md:mt-16 md:flex-row md:gap-4">
-          {[feature.wide, feature.tall].map((image, i) => (
-            <div key={image.src} className="min-w-0 md:[flex:var(--a)_1_0%]" style={{ ["--a" as string]: image.width / image.height }}>
-              <Photo group={group} index={i} sizes="(min-width: 768px) 60vw, 100vw" />
+        {indexed.map((group) => (
+          <div key={group.label} className="mt-14 md:mt-20">
+            <h3 className="flex items-center gap-5 font-display text-[1.5rem] leading-none md:text-[1.875rem]">
+              {group.label}
+              <span aria-hidden="true" className="h-px flex-1 bg-line-dark" />
+            </h3>
+            <div className="mt-6 flex flex-col gap-2 md:mt-8 md:gap-4">
+              {group.rows.map((row, r) => (
+                <div key={r} className="flex gap-2 md:gap-4">
+                  {row.map(({ image, index }) => (
+                    <div key={image.src} className="min-w-0 [flex:var(--a)_1_0%]" style={{ ["--a" as string]: image.width / image.height }}>
+                      <Photo group={all} index={index} sizes={`(min-width: 768px) ${Math.round(100 / row.length)}vw, ${Math.round(100 / row.length)}vw`} />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <p className="mt-3 font-display text-[1.125rem] leading-snug md:text-[1.25rem]">{feature.caption}</p>
-
-        <ul className="m-0 mt-12 grid list-none grid-cols-2 gap-x-3 gap-y-8 p-0 md:mt-16 md:grid-cols-3 md:gap-x-4 md:gap-y-10">
-          {items.map(({ image, caption }, i) => (
-            <li key={image.src}>
-              <figure className="m-0">
-                <Photo group={group} index={i + 2} sizes="(min-width: 768px) 33vw, 50vw" />
-                <figcaption className="mt-3 font-display text-[1.125rem] leading-snug md:text-[1.25rem]">{caption}</figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
+          </div>
+        ))}
 
         <div className="mt-20 md:mt-28">
           <MenuCards />

@@ -29,8 +29,12 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <SignatureDishes
         heading={text.dishes.heading}
         intro={text.dishes.intro}
-        feature={{ wide: m.sushi1, tall: m.sushi2, caption: text.dishes.featureCaption }}
-        items={[m.food1, m.food2, m.food3, m.food4, m.dessert1, m.dessert2].map((image, i) => ({ image, caption: text.dishes.captions[i] }))}
+        groups={[
+          { label: text.dishes.groups[0], rows: [[m.dishRollsLong], [m.dishNigiriPlatter, m.dishNigiriPlate], [m.dishDragonRoll, m.dishRollsTea]] },
+          { label: text.dishes.groups[1], rows: [[m.dishChicken, m.dishBowlBeef], [m.dishTeriyaki, m.dishDuck], [m.dishUdon, m.dishRamen]] },
+          { label: text.dishes.groups[2], rows: [[m.dishDimSum, m.dishBao], [m.dishTartare, m.dishBowlSalmon]] },
+          { label: text.dishes.groups[3], rows: [[m.dishDessertPistachio, m.dishDessertClay]] },
+        ]}
       />
       <GuestsAndPress locale={lang} text={text.guests} />
       <VisitSection locale={lang} />
